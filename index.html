@@ -31,8 +31,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .hdr h1{font-size:15px;font-weight:600;color:#fff}
 .hdr p{font-size:11px;color:rgba(255,255,255,0.55);margin-top:2px}
 /* Bottom nav */
-.nav{position:fixed;bottom:0;left:0;right:0;background:var(--card);border-top:1px solid var(--bd);display:grid;grid-template-columns:repeat(7,1fr);z-index:100}
-.nb{padding:6px 1px 5px;text-align:center;cursor:pointer;border:none;background:none;color:var(--mu);font-size:8.5px;font-family:inherit;line-height:1.3}
+.nav{position:fixed;bottom:0;left:0;right:0;background:var(--card);border-top:1px solid var(--bd);display:grid;grid-template-columns:repeat(5,1fr);z-index:100}
+.nb{padding:6px 4px 5px;text-align:center;cursor:pointer;border:none;background:none;color:var(--mu);font-size:9px;font-family:inherit;line-height:1.3}
 .nb.on{color:var(--pu)}
 .nb svg{display:block;margin:0 auto 2px}
 /* Panels */
@@ -94,10 +94,20 @@ ul{margin-left:15px}li{margin-bottom:3px;font-size:12px}
 .dir-tag{font-size:10px;background:var(--bg);border-radius:20px;padding:2px 7px;color:var(--mu);white-space:nowrap;flex-shrink:0;margin-left:6px}
 /* Compass */
 .compass{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:8px}
-.ci{border-radius:8px;padding:9px 10px}
+.ci{border-radius:8px;padding:9px 10px;color:var(--tx)}
 .ci-s{background:#FFF8E1;border:1px solid #F9A825}.ci-n{background:#E3F2FD;border:1px solid #1565C0}
 .ci-e{background:#F3E5F5;border:1px solid #7B1FA2}.ci-w{background:#E8F5E9;border:1px solid #2E7D32}
 .ci-dir{font-size:13px;font-weight:700;margin-bottom:3px}.ci-txt{font-size:11px;line-height:1.5}
+@media(prefers-color-scheme:dark){
+  .ci-s{background:#3D3000 !important;border-color:#F9A825 !important}
+  .ci-n{background:#001A33 !important;border-color:#1565C0 !important}
+  .ci-e{background:#2A0033 !important;border-color:#7B1FA2 !important}
+  .ci-w{background:#00250A !important;border-color:#2E7D32 !important}
+  .ci-s .ci-dir,.ci-s .ci-txt{color:#FFE082 !important}
+  .ci-n .ci-dir,.ci-n .ci-txt{color:#82B1FF !important}
+  .ci-e .ci-dir,.ci-e .ci-txt{color:#CE93D8 !important}
+  .ci-w .ci-dir,.ci-w .ci-txt{color:#A5D6A7 !important}
+}
 /* Flower beds */
 .fbtabs{display:flex;gap:5px;margin-bottom:10px;flex-wrap:wrap}
 .fbt{padding:6px 9px;border-radius:20px;border:1px solid var(--bd);font-size:11px;font-weight:600;cursor:pointer;background:var(--bg);color:var(--mu);white-space:nowrap}
@@ -140,6 +150,27 @@ ul{margin-left:15px}li{margin-bottom:3px;font-size:12px}
 .zone-a{background:var(--aml);border-radius:8px;padding:9px 10px}
 .zone-c{background:var(--col);border-radius:8px;padding:9px 10px}
 .zone-t{background:var(--tll);border-radius:8px;padding:9px 10px}
+/* Home grid */
+.home-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:0 2px}
+.home-tile{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:12px 8px;display:flex;flex-direction:column;align-items:center;text-align:center;cursor:pointer;font-family:inherit;color:var(--tx)}
+.home-tile:active{background:var(--pul)}
+.home-ico{font-size:24px;margin-bottom:5px}
+.home-lbl{font-size:12px;font-weight:600;line-height:1.3;margin-bottom:2px}
+.home-sub{font-size:9px;color:var(--mu);line-height:1.3}
+/* Sub tabs */
+.sub-tabs{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:0}
+.stab{padding:6px 10px;border-radius:20px;border:1px solid var(--bd);font-size:11px;font-weight:600;cursor:pointer;background:var(--bg);color:var(--mu);white-space:nowrap;font-family:inherit}
+.stab.on{background:var(--pu);color:#fff;border-color:var(--pu)}
+.subp{display:none}.subp.on{display:block}
+/* Rose/Conifer sub panels */
+.rbp{display:none}.rbp.on{display:block}
+.cbp{display:none}.cbp.on{display:block}
+
+.back-btn{display:flex;align-items:center;gap:6px;background:none;border:none;color:var(--mu);font-size:13px;font-weight:500;font-family:inherit;cursor:pointer;padding:2px 0 10px;-webkit-tap-highlight-color:transparent}
+.back-btn svg{flex-shrink:0}
+.back-btn:active{opacity:.6}
+
+.sector{display:inline-flex;align-items:center;gap:5px;background:#1a1a1a;color:#fff;border-radius:8px;padding:5px 10px;font-size:11px;font-weight:600;margin-bottom:10px;text-decoration:none}
 </style>
 </head>
 <body>
@@ -150,13 +181,205 @@ ul{margin-left:15px}li{margin-bottom:3px;font-size:12px}
 </div>
 
 <!-- ═══ РАСТЕНИЯ ═══ -->
-<div id="p-plants" class="panel on">
+<div id="p-home" class="panel on">
+  <div style="padding:4px 0 8px">
+    <p style="font-size:12px;color:var(--mu);text-align:center;margin-bottom:12px">Выберите раздел</p>
+    <div class="home-grid">
+      <button class="home-tile" onclick="goTab('plants',document.getElementById('nb-plants'))">
+        <span class="home-ico">🌸</span>
+        <span class="home-lbl">Многолетники</span>
+        <span class="home-sub">цветы, кусты, злаки</span>
+      </button>
+      <button class="home-tile" onclick="goTab('roses',document.getElementById('nb-roses'))">
+        <span class="home-ico">🌹</span>
+        <span class="home-lbl">Розы</span>
+        <span class="home-sub">сорта, уход, зимовка</span>
+      </button>
+      <button class="home-tile" onclick="goTab('conifer',document.getElementById('nb-conifer'))">
+        <span class="home-ico">🌲</span>
+        <span class="home-lbl">Хвойные</span>
+        <span class="home-sub">ели, сосны, туи, можжевельники</span>
+      </button>
+      <button class="home-tile" onclick="goTab('fruit',document.getElementById('nb-fruit'))">
+        <span class="home-ico">🍎</span>
+        <span class="home-lbl">Плодовые</span>
+        <span class="home-sub">яблони, груши, ягоды</span>
+      </button>
+      <button class="home-tile" onclick="goTab('flbeds',document.getElementById('nb-flbeds'))">
+        <span class="home-ico">🪴</span>
+        <span class="home-lbl">Цветники</span>
+        <span class="home-sub">миксбордер, горка, тень...</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div id="p-plants" class="panel">
+  <button class="back-btn" onclick="goTab('home',document.getElementById('nb-home'))"><svg width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>На главную</button>
+
   <div class="card">
-    <div class="lbl">Выберите многолетник</div>
-    <div class="pgrid" id="plist"></div>
+    <div class="lbl">Категория многолетников</div>
+    <a class="sector" href="https://sagenec.com/cvetushchie-i-dekorativnye-mnogoletniki" target="_blank">📍 Многолетники на сайте питомника</a>
+    <div class="sub-tabs">
+      <button class="stab on" onclick="subTab('flowers',this)">🌸 Цветы</button>
+      <button class="stab" onclick="subTab('shrubs',this)">🌿 Кустарники</button>
+      <button class="stab" onclick="subTab('ground',this)">🟩 Почвопокровные</button>
+      <button class="stab" onclick="subTab('grasses',this)">🌾 Злаки</button>
+      <button class="stab" onclick="subTab('ferns',this)">🌿 Папоротники</button>
+    </div>
+  </div>
+  <!-- Цветы -->
+  <div id="sub-flowers" class="subp on">
+    <div class="card">
+      <div class="pgrid" id="plist-flowers"></div>
+    </div>
+  </div>
+  <!-- Кустарники -->
+  <div id="sub-shrubs" class="subp">
+    <div class="card">
+      <div class="pgrid" id="plist-shrubs"></div>
+    </div>
+  </div>
+  <!-- Почвопокровные -->
+  <div id="sub-ground" class="subp">
+    <div class="card">
+      <div class="pgrid" id="plist-ground"></div>
+    </div>
+  </div>
+  <!-- Злаки -->
+  <div id="sub-grasses" class="subp">
+    <div class="card">
+      <div class="pgrid" id="plist-grasses"></div>
+    </div>
+  </div>
+  <!-- Папоротники -->
+  <div id="sub-ferns" class="subp">
+    <div class="card">
+      <div class="pgrid" id="plist-ferns"></div>
+    </div>
   </div>
   <div class="card detail" id="pdetail"><div id="pcontent"></div></div>
 </div>
+
+<div id="p-roses" class="panel">
+  <button class="back-btn" onclick="goTab('home',document.getElementById('nb-home'))"><svg width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>На главную</button>
+
+  <div class="card">
+    <div class="sec">🌹 Розы</div>
+    <a class="sector" href="https://sagenec.com/rozy" target="_blank">📍 Розы на сайте питомника</a>
+    <div class="sub-tabs">
+      <button class="stab on" onclick="roseTab('types',this)">Группы</button>
+      <button class="stab" onclick="roseTab('care',this)">Уход</button>
+      <button class="stab" onclick="roseTab('winter',this)">Зимовка</button>
+    </div>
+  </div>
+  <div id="rt-types" class="rbp on">
+    <div class="card">
+      <div class="lbl">Группы роз в питомнике</div>
+      <div class="pgrid">
+        <div class="ib" style="border-radius:10px;border:1px solid var(--bd);padding:10px">
+          <div style="font-size:13px;font-weight:600;margin-bottom:4px">🌸 Чайно-гибридные</div>
+          <div style="font-size:11px;color:var(--mu);line-height:1.5">Крупные одиночные цветки, классика. Высота 60–100 см. Нужно укрытие.</div>
+        </div>
+        <div class="ib" style="border-radius:10px;border:1px solid var(--bd);padding:10px">
+          <div style="font-size:13px;font-weight:600;margin-bottom:4px">🌺 Флорибунда</div>
+          <div style="font-size:11px;color:var(--mu);line-height:1.5">Кисти мелких цветков. Длинное цветение. Чуть устойчивее ЧГ.</div>
+        </div>
+        <div class="ib" style="border-radius:10px;border:1px solid var(--bd);padding:10px">
+          <div style="font-size:13px;font-weight:600;margin-bottom:4px">🌿 Почвопокровные</div>
+          <div style="font-size:11px;color:var(--mu);line-height:1.5">Низкие, 30–60 см. Обильное цветение. Более морозостойкие.</div>
+        </div>
+        <div class="ib" style="border-radius:10px;border:1px solid var(--bd);padding:10px">
+          <div style="font-size:13px;font-weight:600;margin-bottom:4px">🏔 Парковые</div>
+          <div style="font-size:11px;color:var(--mu);line-height:1.5">Зимостойкие без укрытия! Включают канадские, шрабы. Идеал для С-З.</div>
+        </div>
+        <div class="ib" style="border-radius:10px;border:1px solid var(--bd);padding:10px">
+          <div style="font-size:13px;font-weight:600;margin-bottom:4px">🎋 Плетистые</div>
+          <div style="font-size:11px;color:var(--mu);line-height:1.5">До 3–5 м. Для арок, пергол. Укрытие обязательно.</div>
+        </div>
+        <div class="ib" style="border-radius:10px;border:1px solid var(--bd);padding:10px">
+          <div style="font-size:13px;font-weight:600;margin-bottom:4px">🌳 Штамбовые</div>
+          <div style="font-size:11px;color:var(--mu);line-height:1.5">Привитые на штамб. Требуют тщательного укрытия на зиму.</div>
+        </div>
+      </div>
+      <div class="warn" style="margin-top:10px">🌡️ <b>Для Ленобласти лучший выбор:</b> парковые (канадские, Кордес, Austin) и почвопокровные — зимуют без укрытия или с лёгким укрытием</div>
+    </div>
+    <div class="card">
+      <div class="lbl">Популярные признаки</div>
+      <div class="tags" style="margin-top:4px">
+        <span class="tag tg">❄️ Морозостойкие: Канадские, Бордюрные</span>
+        <span class="tag tc">🌸 Ароматные: ЧГ, Остин, Парковые</span>
+        <span class="tag tb">🔄 Повторное цветение: Флорибунда, ЧГ</span>
+        <span class="tag ta">☀️ Солнце 6+ ч — обязательно для всех роз</span>
+      </div>
+    </div>
+  </div>
+  <div id="rt-care" class="rbp">
+    <div class="card">
+      <div class="sec">Уход за розами</div>
+      <div class="frule"><div class="frule-t">Посадка</div><div class="frule-b">Май или август–сентябрь. Яма 50×50×50 см. Место прививки — 5 см НИЖЕ уровня почвы (защита от вымерзания). Южная сторона, 6+ часов солнца.</div></div>
+      <div class="frule"><div class="frule-t">Почва</div><div class="frule-b">Питательная суглинистая, нейтральная (pH 6–7). Добавить перегной 2–3 ведра + суперфосфат 100г. Дренаж при тяжёлом грунте.</div></div>
+      <div class="frule"><div class="frule-t">Полив</div><div class="frule-b">Редкий и обильный (10–15 л под куст). Не по листьям — чёрная пятнистость! Лучше утром.</div></div>
+      <div class="frule"><div class="frule-t">Подкормки</div><div class="frule-b">Весна: азот (аммиачная селитра). До и после цветения: калийно-фосфорные. С августа — только калий, азот прекратить!</div></div>
+      <div class="frule"><div class="frule-t">Обрезка весной</div><div class="frule-b">Когда почки набухли (апрель–май). ЧГ и флорибунда — на 3–5 почек. Парковые — санитарная + прореживание. Плетистые — убрать старые ветки.</div></div>
+    </div>
+  </div>
+  <div id="rt-winter" class="rbp">
+    <div class="card">
+      <div class="sec">❄️ Зимовка роз в Ленобласти</div>
+      <div class="frule"><div class="frule-t">Когда укрывать</div><div class="frule-b">После первых заморозков −3–5°C, но до −8°C. Октябрь–начало ноября. Нельзя укрывать раньше — выпреют!</div></div>
+      <div class="frule"><div class="frule-t">Чайно-гибридные, флорибунда</div><div class="frule-b">Окучить землёй/торфом 20–30 см. Ветки связать, наклонить к земле, прижать шпильками. Укрыть лапником или спанбондом.</div></div>
+      <div class="frule"><div class="frule-t">Плетистые</div><div class="frule-b">Снять с опоры, свернуть кольцом, уложить на лапник. Сверху — лапник + спанбонд + плёнка (от воды).</div></div>
+      <div class="frule"><div class="frule-t">Парковые (канадские)</div><div class="frule-b">Достаточно окучить торфом 15–20 см. Лапник на ветки — по желанию. Самые зимостойкие.</div></div>
+      <div class="frule"><div class="frule-t">Раскрытие весной</div><div class="frule-b">В апреле, постепенно. Сначала проветривание, потом полное снятие укрытия. Не торопиться — возвратные морозы!</div></div>
+      <div class="warn">⚠️ <b>Главная причина гибели роз — не мороз, а выпревание</b> под мокрым укрытием. Нужна вентиляция!</div>
+    </div>
+  </div>
+</div>
+
+<div id="p-conifer" class="panel">
+  <button class="back-btn" onclick="goTab('home',document.getElementById('nb-home'))"><svg width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>На главную</button>
+
+  <div class="card">
+    <div class="sec">🌲 Хвойные растения</div>
+    <a class="sector" href="https://sagenec.com/hvoynye-rasteniya" target="_blank">📍 Хвойные на сайте питомника</a>
+    <div class="sub-tabs">
+      <button class="stab on" onclick="conTab('list',this)">Виды</button>
+      <button class="stab" onclick="conTab('care',this)">Посадка и уход</button>
+    </div>
+  </div>
+  <div id="ct-list" class="cbp on">
+    <div class="card">
+      <div class="lbl">Туи</div>
+      <div class="ib" style="margin-bottom:7px"><div class="iv"><b>Туя западная Smaragd</b> — колонна до 5 м, тёмно-зелёная, классика живых изгородей. Солнце/полутень.<br><b>Brabant</b> — быстрорастущая, до 20 м, для высоких изгородей.<br><b>Danica</b> — шар 60–80 см, медленная, для бордюров.<br><b>Rheingold</b> — шар золотистый, до 1.5 м, осенью медный.</div></div>
+    </div>
+    <div class="card">
+      <div class="lbl">Ели</div>
+      <div class="ib" style="margin-bottom:7px"><div class="iv"><b>Ель колючая (голубая)</b> — до 20 м, серебристо-голубая хвоя. Солнце.<br><b>Picea glauca Conica</b> — конус до 2 м, медленная, для акцентов.<br><b>Nidiformis (гнездовая)</b> — подушка 40–60 см, для рокариев.</div></div>
+    </div>
+    <div class="card">
+      <div class="lbl">Можжевельники</div>
+      <div class="ib" style="margin-bottom:7px"><div class="iv"><b>Skyrocket</b> — стрела до 4–5 м, голубовато-зелёный.<br><b>Blue Arrow</b> — узкий столб, 3–4 м, синеватая хвоя.<br><b>Pfitzeriana</b> — раскидистый, 0.5–1.5 м высота при 2–3 м ширине.<br><b>Сабина Variegata</b> — стелющийся, пятнистая хвоя.<br><b>Andorra Compact</b> — подушка, зимой фиолетовый.</div></div>
+    </div>
+    <div class="card">
+      <div class="lbl">Сосны, пихты, лиственницы</div>
+      <div class="ib"><div class="iv"><b>Сосна горная Mughus</b> — плотный куст 1–2 м, идеал для рокариев.<br><b>Сосна горная Pumilio</b> — ещё компактнее, 60 см.<br><b>Пихта корейская</b> — конус с фиолетовыми шишками, до 3 м.<br><b>Лиственница</b> — листопадная! Золотая осенью.</div></div>
+    </div>
+    <div class="warn">🌡️ Все хвойные питомника — зона 4b, зимуют без укрытия. Исключение: молодые туи в первый год — лёгкое укрытие от весеннего солнца (ожоги).</div>
+  </div>
+  <div id="ct-care" class="cbp">
+    <div class="card">
+      <div class="sec">Посадка и уход за хвойными</div>
+      <div class="frule"><div class="frule-t">Когда сажать</div><div class="frule-b">Весна (апр–май) до распускания почек или осень (авг–сент). Контейнерные — всё лето. Пересадка переносится хуже, чем у лиственных.</div></div>
+      <div class="frule"><div class="frule-t">Яма и почва</div><div class="frule-b">Глубина 60–80 см, ширина 2× кома. Дренаж 15–20 см (щебень). Для туй и елей — нейтральная почва. Для можжевельников — добавить песок. Для пихт и лиственниц — лёгкие, кислые почвы.</div></div>
+      <div class="frule"><div class="frule-t">Полив</div><div class="frule-b">В первый год — регулярно (раз в неделю 10–20 л). Дождевание кроны в жару — хвоя очень благодарна. Взрослые — засухоустойчивы.</div></div>
+      <div class="frule"><div class="frule-t">Удобрения</div><div class="frule-b">Только специальные — для хвойных (Агрикола, Фертика). Общие с азотом — не давать: провоцируют рост, снижают зимостойкость. Раз в год весной.</div></div>
+      <div class="frule"><div class="frule-t">Весенний ожог</div><div class="frule-b">Главная проблема у туй и елей: февраль–март — яркое солнце при мёрзлой земле. Укрывать мешковиной или спанбондом с февраля. После схода снега — обязателен полив.</div></div>
+      <div class="frule"><div class="frule-t">Обрезка</div><div class="frule-b">Туи для изгороди: стрижка 2× в сезон (июнь и август). Можжевельники: только санитарная. Ели и сосны: не обрезать — нарушает форму.</div></div>
+    </div>
+  </div>
+</div>
+
 
 <!-- ═══ УХОД ═══ -->
 <div id="p-care" class="panel">
@@ -258,6 +481,8 @@ ul{margin-left:15px}li{margin-bottom:3px;font-size:12px}
 
 <!-- ═══ ЦВЕТНИКИ ═══ -->
 <div id="p-flbeds" class="panel">
+  <button class="back-btn" onclick="goTab('home',document.getElementById('nb-home'))"><svg width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>На главную</button>
+
   <div class="card">
     <div class="sec">🌸 Схемы цветников</div>
     <p style="font-size:12px;color:var(--mu);line-height:1.5;margin-bottom:10px">Выберите тип — получите схему по планам и список растений</p>
@@ -322,9 +547,11 @@ ul{margin-left:15px}li{margin-bottom:3px;font-size:12px}
 
 <!-- ═══ ПЛОДОВЫЕ ═══ -->
 <div id="p-fruit" class="panel">
+  <button class="back-btn" onclick="goTab('home',document.getElementById('nb-home'))"><svg width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>На главную</button>
+
   <div class="card">
     <div class="sec">🍎 Плодовые деревья и кустарники</div>
-    <p style="font-size:12px;color:var(--mu);line-height:1.5;margin-bottom:10px">Сектор <b>«Плодовые растения»</b> на sagenec.com/plodovie-rastenia</p>
+    <a class="sector" href="https://sagenec.com/plodovie-rastenia" target="_blank">📍 Плодовые на сайте питомника</a>
     <div class="ftabs">
       <div class="ft on" onclick="frTab('yab',this)">🍎 Яблони</div>
       <div class="ft" onclick="frTab('gru',this)">🍐 Груши</div>
@@ -606,20 +833,16 @@ ul{margin-left:15px}li{margin-bottom:3px;font-size:12px}
 
 <!-- ═══ NAV ═══ -->
 <nav class="nav">
-  <button class="nb on" onclick="goTab('plants',this)">
-    <svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M17 8C8 10 5.9 16.17 3.82 21L5.71 22l1-2.3A4.49 4.49 0 008 20C19 20 22 3 22 3c-1 2-8 2-8 2s-1-7-7-7c0 0 0 12 8 12"/></svg>Растения</button>
-  <button class="nb" onclick="goTab('care',this)">
-    <svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2m0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8m.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67Z"/></svg>Уход</button>
-  <button class="nb" onclick="goTab('faq',this)">
-    <svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M11.5 2C6.81 2 3 5.81 3 10.5S6.81 19 11.5 19h.5v3c4.86-2.34 8-7 8-11.5C20 5.81 16.19 2 11.5 2m1 14.5h-2v-2h2zm0-4h-2c0-3.25 3-3 3-5 0-1.1-.9-2-2-2s-2 .9-2 2h-2c0-2.21 1.79-4 4-4s4 1.79 4 4c0 2.5-3 2.75-3 5"/></svg>Вопросы</button>
-  <button class="nb" onclick="goTab('about',this)">
-    <svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2m1 15h-2v-6h2zm0-8h-2V7h2z"/></svg>Питомник</button>
-  <button class="nb" onclick="goTab('light',this)">
-    <svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M12 7a5 5 0 1 0 0 10A5 5 0 0 0 12 7m0-5.5a.75.75 0 0 1 .75.75v2a.75.75 0 0 1-1.5 0v-2A.75.75 0 0 1 12 1.5m0 19a.75.75 0 0 1-.75-.75v-2a.75.75 0 0 1 1.5 0v2A.75.75 0 0 1 12 20.5m8.5-8.5a.75.75 0 0 1-.75.75h-2a.75.75 0 0 1 0-1.5h2a.75.75 0 0 1 .75.75m-19 0a.75.75 0 0 1 .75-.75h2a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1-.75-.75"/></svg>Свет</button>
-  <button class="nb" onclick="goTab('flbeds',this)">
-    <svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M6.5 10h-2v7h2zm6 0h-2v7h2zm8.5 9H2v2h19zm-2.5-9h-2v7h2zM11.5 1L2 6v2h19V6z"/></svg>Цветники</button>
-  <button class="nb" onclick="goTab('fruit',this)">
-    <svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M17.5 12A5.5 5.5 0 0 1 12 17.5 5.5 5.5 0 0 1 6.5 12 5.5 5.5 0 0 1 12 6.5 5.5 5.5 0 0 1 17.5 12M12 2a10 10 0 0 0-10 10 10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2z"/></svg>Плодовые</button>
+  <button id="nb-home" class="nb on" onclick="goTab('home',this)">
+    <svg width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>Главная</button>
+  <button id="nb-light" class="nb" onclick="goTab('light',this)">
+    <svg width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M12 7a5 5 0 1 0 0 10A5 5 0 0 0 12 7m0-5.5a.75.75 0 0 1 .75.75v2a.75.75 0 0 1-1.5 0v-2A.75.75 0 0 1 12 1.5m0 19a.75.75 0 0 1-.75-.75v-2a.75.75 0 0 1 1.5 0v2A.75.75 0 0 1 12 20.5m8.5-8.5a.75.75 0 0 1-.75.75h-2a.75.75 0 0 1 0-1.5h2a.75.75 0 0 1 .75.75m-19 0a.75.75 0 0 1 .75-.75h2a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1-.75-.75"/></svg>По свету</button>
+  <button id="nb-faq" class="nb" onclick="goTab('faq',this)">
+    <svg width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M11.5 2C6.81 2 3 5.81 3 10.5S6.81 19 11.5 19h.5v3c4.86-2.34 8-7 8-11.5C20 5.81 16.19 2 11.5 2m1 14.5h-2v-2h2zm0-4h-2c0-3.25 3-3 3-5 0-1.1-.9-2-2-2s-2 .9-2 2h-2c0-2.21 1.79-4 4-4s4 1.79 4 4c0 2.5-3 2.75-3 5"/></svg>Вопросы</button>
+  <button id="nb-care" class="nb" onclick="goTab('care',this)">
+    <svg width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M17 8C8 10 5.9 16.17 3.82 21L5.71 22l1-2.3A4.49 4.49 0 008 20C19 20 22 3 22 3c-1 2-8 2-8 2s-1-7-7-7c0 0 0 12 8 12"/></svg>Уход</button>
+  <button id="nb-about" class="nb" onclick="goTab('about',this)">
+    <svg width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2m1 15h-2v-6h2zm0-8h-2V7h2z"/></svg>Питомник</button>
 </nav>
 
 <script>
@@ -648,22 +871,48 @@ var IMG = {
   aquil:'https://sagenec.com/image/cache/catalog/categor_image/MainP%20aquilegia-241x181.jpg',
   timyan:'https://sagenec.com/image/cache/catalog/categor_image/MainP%20thymus-241x181.jpg',
   zlaki:'https://sagenec.com/image/cache/catalog/categor_image/MainP%20zlaki-241x181.jpg',
+  miskantus:'https://sagenec.com/image/cache/catalog/categor_image/MainP%20zlaki-241x181.jpg',
+  molinia:'https://sagenec.com/image/cache/catalog/categor_image/MainP%20zlaki-241x181.jpg',
+  veynik:'https://sagenec.com/image/cache/catalog/categor_image/MainP%20zlaki-241x181.jpg',
+  osoka:'https://sagenec.com/image/cache/catalog/categor_image/MainP%20zlaki-241x181.jpg',
+  zhivuchka:'https://sagenec.com/image/cache/catalog/categor_image/MainP%20mnogoletniki-241x181.jpg',
+  yaskolka:'https://sagenec.com/image/cache/catalog/categor_image/MainP%20mnogoletniki-241x181.jpg',
+  flossh:'https://sagenec.com/image/cache/catalog/categor_image/MainP%20phlox%20paniculata-241x181.jpg',
+  barv:'https://sagenec.com/image/cache/catalog/categor_image/MainP%20mnogoletniki-241x181.jpg',
   mnogolet:'https://sagenec.com/image/cache/catalog/categor_image/MainP%20mnogoletniki-241x181.jpg'
 };
 
 var P = {
-  hosta:{n:'Хосты',e:'Хосты',img:'hosta',d:'Декоративная листва для тени. Ценится фактура и окраска листа.',tags:[['тень/полутень','tb'],['влажная почва','tt'],['до 15 лет без пересадки','tg'],['20–80 см','tp']],pos:'Май или авг-сент. Почка роста на 2–3 см ниже поверхности. Расстояние 40–80 см.',uh:'Полив в засуху, мульча. Азотная подкормка весной. Обрезка листьев осенью.',pl:'Долговечны (15–20 лет), не болеют, огромный выбор сортов.',mn:'Слизни — главный враг. Полная декоративность на 3-й год.',pr:'200–800 ₽',bl:'Июль-август'},
-  phlox:{n:'Флоксы',e:'Флоксы метельчатые',img:'phlox',d:'Классика сада. Пышные соцветия, яркий аромат.',tags:[['солнце/полутень','ta'],['зимостойкие','tg'],['60–120 см','tp'],['ароматные','tc']],pos:'Весна или ранняя осень. Корн. шейка на уровне почвы. Расстояние 50–60 см.',uh:'Регулярный полив. Удалять отцветшие метёлки. Делить каждые 4–5 лет.',pl:'Долгое цветение, сильный аромат, хороши в срезке.',mn:'Мучнистая роса при плохой вентиляции. Нельзя сажать густо.',pr:'150–450 ₽',bl:'Июль-сентябрь'},
-  iris:{n:'Ирисы',e:'Ирисы',img:'iris',d:'Бородатые и безбородые. Засухоустойчивы, зимостойки.',tags:[['солнце','ta'],['засухоустойчивы','tg'],['нет застоя воды','tc'],['40–100 см','tp']],pos:'Июль-август (после цветения). Корневище бородатых — наполовину НА поверхности!',uh:'Минимум поливов. Подкормка весной и после цветения. Деление каждые 4–5 лет.',pl:'Засухоустойчивы, уникальные окраски, раннее цветение.',mn:'Бородатые не терпят тени и сырости. Цветут 7–10 дней.',pr:'200–600 ₽',bl:'Май-июнь (бородатые), июнь-июль (сибирские)'},
-  lily:{n:'Лилейники',e:'Лилейники',img:'lily',d:'Не путать с лилиями! Выносливый долгожитель. Каждый цветок — 1 день, но бутонов много.',tags:[['солнце/полутень','ta'],['засухоустойчивы','tg'],['7–10 лет без пересадки','tt'],['40–90 см','tp']],pos:'Весна или начало осени. Корн. шейка на уровне почвы. Расстояние 50–70 см.',uh:'Полив в сухую погоду. Удалять отцветшие цветоносы. Деление раз в 7–10 лет.',pl:'Исключительная неприхотливость, огромный выбор, долго без пересадки.',mn:'Каждый цветок живёт 1 день. Некоторые сорта без аромата.',pr:'200–700 ₽',bl:'Июнь-август'},
-  astilba:{n:'Астильбы',e:'Астильбы',img:'astilba',d:'Незаменимы для влажной тени. Пушистые метёлки от белого до тёмно-красного.',tags:[['тень/полутень','tb'],['влажная почва','tt'],['30–120 см','tp'],['берег водоёма','tc']],pos:'Весна. Корневище не заглублять. Расстояние 30–50 см. Почва питательная, не пересыхающая.',uh:'Регулярный полив — главное условие. Мульча обязательна. Деление каждые 4–5 лет.',pl:'Цветут в тени, сухие метёлки красивы осенью, не болеют.',mn:'Не переносят засухи и полуденного солнца. На сухих почвах гибнут.',pr:'150–500 ₽',bl:'Июнь-август'},
-  echi:{n:'Эхинацеи',e:'Эхинацеи',img:'echi',d:'Лекарственное растение и украшение сада. Крупные корзинки-цветки.',tags:[['солнце','ta'],['засухоустойчивы','tg'],['медонос','tt'],['60–120 см','tp']],pos:'Весна. Глубина 3–5 см. Расстояние 40–60 см. Обязателен хороший дренаж.',uh:'Минимум поливов. Удалять отцветшие корзинки для повторного цветения.',pl:'Засухоустойчива, медонос, лекарственная, долгое цветение.',mn:'Нужен дренаж (гниёт при застое воды). Зацветает на 2-й год.',pr:'200–600 ₽',bl:'Июль-сентябрь'},
-  heuch:{n:'Гейхеры',e:'Гейхеры',img:'heuch',d:'Главный тренд. Уникальные цвета листьев от лимонного до почти чёрного.',tags:[['полутень/тень','tb'],['декор. лист','tp'],['вечнозелёные','tt'],['20–40 см','ta']],pos:'Май. Корн. шейка чуть выше уровня почвы. Расстояние 30–40 см.',uh:'Умеренный полив. Раз в 3–4 года делить. Лёгкое укрытие лапником на зиму.',pl:'Яркая листва весь сезон, компактны, отлично сочетаются в миксах.',mn:'В суровые зимы подмерзают — нужен лапник. Не любят застой воды.',pr:'250–800 ₽',bl:'Июнь (ценится лист)'},
-  pion:{n:'Пионы',e:'Пионы',img:'pion',d:'Долгожители 30–50 лет. Роскошные ароматные цветки, почти без ухода.',tags:[['солнце','ta'],['не любят пересадку','tc'],['до 50 лет','tg'],['60–100 см','tp']],pos:'Август-сентябрь. Почки замещения строго на 3–5 см ниже поверхности — ключевое правило!',uh:'Подкормка весной и после цветения. Удалять отцветшие головки. Обрезка в сентябре.',pl:'Живут 30–50 лет без пересадки, мощный аромат, неприхотливы.',mn:'Не цветут первые 1–2 года. Слишком глубокая посадка = нет цветения никогда.',pr:'300–1200 ₽',bl:'Май-июнь'},
-  delph:{n:'Дельфиниумы',e:'Дельфиниумы',img:'delph',d:'Высокие свечи синих, голубых, лиловых цветков. Нет другого такого синего!',tags:[['солнце','ta'],['100–200 см','tp'],['повторное цветение','tt'],['нужна опора','tc']],pos:'Весна. Расстояние 50–70 см. Питательная почва, нейтральная кислотность.',uh:'Подвязка к колышкам обязательна. После цветения срезать на 1/3 — зацветут повторно.',pl:'Уникальный синий цвет, повторное цветение осенью, мощный вертикальный акцент.',mn:'Нужны опоры. Не любят жару и сырость. Обновлять раз в 3–5 лет.',pr:'200–550 ₽',bl:'Июнь-июль, повторно авг-сент'},
-  clem:{n:'Клематисы',e:'Клематисы',img:'clem',d:'Вьющиеся для вертикального озеленения. Цветки от 5 до 20 см диаметром.',tags:[['солнце','ta'],['опора обязательна','tc'],['до 3–5 м','tp'],['группы обрезки 1–3','tb']],pos:'Весна. Заглубить на 5–10 см (защита от вымерзания). Опора с первого дня.',uh:'Обрезка зависит от группы (1, 2 или 3) — уточнять при покупке! Мульча корней.',pl:'Вертикальное озеленение, огромные цветки, долгоживущие.',mn:'Вилт — грибковое увядание побегов. Важно знать группу обрезки сорта.',pr:'350–1500 ₽',bl:'Май-октябрь (зависит от сорта)'},
-  fern:{n:'Папоротники',e:'Папоротники',img:'fern',d:'Незаменимы для проблемной тени. Атмосфера природного леса.',tags:[['тень','tb'],['влажные почвы','tt'],['без ухода','tg'],['30–100 см','tp']],pos:'Весна или ранняя осень. Корневище неглубоко. Почва лесная, с торфом, кислая.',uh:'Практически без ухода. Обрезать старые вайи весной. Полив в засуху.',pl:'Идеальны для тёмных мест, не болеют, почти не требуют ухода.',mn:'Медленно разрастаются. Теплолюбивые виды нуждаются в укрытии.',pr:'200–700 ₽',bl:'Не цветут — декоративная листва'},
-  sedum:{n:'Очитки',e:'Очитки (седумы)',img:'sedum',d:'Суккуленты для альпийских горок и сухих мест. Почти без ухода.',tags:[['солнце','ta'],['засухоустойчивы','tg'],['альпийская горка','tt'],['5–60 см','tp']],pos:'Весна. Дренированная, даже бедная почва. Не терпят застоя воды.',uh:'Минимальный уход. Поливать только в сильную жару. Делить раз в 3–4 года.',pl:'Абсолютная засухоустойчивость, медонос, декоративны даже зимой.',mn:'Не переносят тяжёлую сырую почву. Высокие виды нуждаются в опоре.',pr:'150–400 ₽',bl:'Июль-октябрь'}
+  hosta:{n:'Хосты',e:'Хосты',img:'hosta',d:'Декоративная листва для тени. Ценится фактура и окраска листа.',tags:[['тень/полутень','tb'],['влажная почва','tt'],['до 15 лет без пересадки','tg'],['20–80 см','tp']],pos:'Май или авг-сент. Почка роста на 2–3 см ниже поверхности. Расстояние 40–80 см.',uh:'Полив в засуху, мульча. Азотная подкормка весной. Обрезка листьев осенью.',pl:'Долговечны (15–20 лет), не болеют, огромный выбор сортов.',mn:'Слизни — главный враг. Полная декоративность на 3-й год.',pr:'200–800 ₽',bl:'Июль-август',loc:'sagenec.com/hosty'},
+  phlox:{n:'Флоксы',e:'Флоксы метельчатые',img:'phlox',d:'Классика сада. Пышные соцветия, яркий аромат.',tags:[['солнце/полутень','ta'],['зимостойкие','tg'],['60–120 см','tp'],['ароматные','tc']],pos:'Весна или ранняя осень. Корн. шейка на уровне почвы. Расстояние 50–60 см.',uh:'Регулярный полив. Удалять отцветшие метёлки. Делить каждые 4–5 лет.',pl:'Долгое цветение, сильный аромат, хороши в срезке.',mn:'Мучнистая роса при плохой вентиляции. Нельзя сажать густо.',pr:'150–450 ₽',bl:'Июль-сентябрь',loc:'sagenec.com/foks-metolchatyy'},
+  iris:{n:'Ирисы',e:'Ирисы',img:'iris',d:'Бородатые и безбородые. Засухоустойчивы, зимостойки.',tags:[['солнце','ta'],['засухоустойчивы','tg'],['нет застоя воды','tc'],['40–100 см','tp']],pos:'Июль-август (после цветения). Корневище бородатых — наполовину НА поверхности!',uh:'Минимум поливов. Подкормка весной и после цветения. Деление каждые 4–5 лет.',pl:'Засухоустойчивы, уникальные окраски, раннее цветение.',mn:'Бородатые не терпят тени и сырости. Цветут 7–10 дней.',pr:'200–600 ₽',bl:'Май-июнь (бородатые), июнь-июль (сибирские)',loc:'sagenec.com/irisy'},
+  lily:{n:'Лилейники',e:'Лилейники',img:'lily',d:'Не путать с лилиями! Выносливый долгожитель. Каждый цветок — 1 день, но бутонов много.',tags:[['солнце/полутень','ta'],['засухоустойчивы','tg'],['7–10 лет без пересадки','tt'],['40–90 см','tp']],pos:'Весна или начало осени. Корн. шейка на уровне почвы. Расстояние 50–70 см.',uh:'Полив в сухую погоду. Удалять отцветшие цветоносы. Деление раз в 7–10 лет.',pl:'Исключительная неприхотливость, огромный выбор, долго без пересадки.',mn:'Каждый цветок живёт 1 день. Некоторые сорта без аромата.',pr:'200–700 ₽',bl:'Июнь-август',loc:'sagenec.com/gemerocallis'},
+  astilba:{n:'Астильбы',e:'Астильбы',img:'astilba',d:'Незаменимы для влажной тени. Пушистые метёлки от белого до тёмно-красного.',tags:[['тень/полутень','tb'],['влажная почва','tt'],['30–120 см','tp'],['берег водоёма','tc']],pos:'Весна. Корневище не заглублять. Расстояние 30–50 см. Почва питательная, не пересыхающая.',uh:'Регулярный полив — главное условие. Мульча обязательна. Деление каждые 4–5 лет.',pl:'Цветут в тени, сухие метёлки красивы осенью, не болеют.',mn:'Не переносят засухи и полуденного солнца. На сухих почвах гибнут.',pr:'150–500 ₽',bl:'Июнь-август',loc:'sagenec.com/astilba'},
+  echi:{n:'Эхинацеи',e:'Эхинацеи',img:'echi',d:'Лекарственное растение и украшение сада. Крупные корзинки-цветки.',tags:[['солнце','ta'],['засухоустойчивы','tg'],['медонос','tt'],['60–120 см','tp']],pos:'Весна. Глубина 3–5 см. Расстояние 40–60 см. Обязателен хороший дренаж.',uh:'Минимум поливов. Удалять отцветшие корзинки для повторного цветения.',pl:'Засухоустойчива, медонос, лекарственная, долгое цветение.',mn:'Нужен дренаж (гниёт при застое воды). Зацветает на 2-й год.',pr:'200–600 ₽',bl:'Июль-сентябрь',loc:'sagenec.com/ehinatseya'},
+  heuch:{n:'Гейхеры',e:'Гейхеры',img:'heuch',d:'Главный тренд. Уникальные цвета листьев от лимонного до почти чёрного.',tags:[['полутень/тень','tb'],['декор. лист','tp'],['вечнозелёные','tt'],['20–40 см','ta']],pos:'Май. Корн. шейка чуть выше уровня почвы. Расстояние 30–40 см.',uh:'Умеренный полив. Раз в 3–4 года делить. Лёгкое укрытие лапником на зиму.',pl:'Яркая листва весь сезон, компактны, отлично сочетаются в миксах.',mn:'В суровые зимы подмерзают — нужен лапник. Не любят застой воды.',pr:'250–800 ₽',bl:'Июнь (ценится лист)',loc:'sagenec.com/geykhera'},
+  pion:{n:'Пионы',e:'Пионы',img:'pion',d:'Долгожители 30–50 лет. Роскошные ароматные цветки, почти без ухода.',tags:[['солнце','ta'],['не любят пересадку','tc'],['до 50 лет','tg'],['60–100 см','tp']],pos:'Август-сентябрь. Почки замещения строго на 3–5 см ниже поверхности — ключевое правило!',uh:'Подкормка весной и после цветения. Удалять отцветшие головки. Обрезка в сентябре.',pl:'Живут 30–50 лет без пересадки, мощный аромат, неприхотливы.',mn:'Не цветут первые 1–2 года. Слишком глубокая посадка = нет цветения никогда.',pr:'300–1200 ₽',bl:'Май-июнь',loc:'sagenec.com/piony'},
+  delph:{n:'Дельфиниумы',e:'Дельфиниумы',img:'delph',d:'Высокие свечи синих, голубых, лиловых цветков. Нет другого такого синего!',tags:[['солнце','ta'],['100–200 см','tp'],['повторное цветение','tt'],['нужна опора','tc']],pos:'Весна. Расстояние 50–70 см. Питательная почва, нейтральная кислотность.',uh:'Подвязка к колышкам обязательна. После цветения срезать на 1/3 — зацветут повторно.',pl:'Уникальный синий цвет, повторное цветение осенью, мощный вертикальный акцент.',mn:'Нужны опоры. Не любят жару и сырость. Обновлять раз в 3–5 лет.',pr:'200–550 ₽',bl:'Июнь-июль, повторно авг-сент',loc:'sagenec.com/delfiniumy'},
+  clem:{n:'Клематисы',e:'Клематисы',img:'clem',d:'Вьющиеся для вертикального озеленения. Цветки от 5 до 20 см диаметром.',tags:[['солнце','ta'],['опора обязательна','tc'],['до 3–5 м','tp'],['группы обрезки 1–3','tb']],pos:'Весна. Заглубить на 5–10 см (защита от вымерзания). Опора с первого дня.',uh:'Обрезка зависит от группы (1, 2 или 3) — уточнять при покупке! Мульча корней.',pl:'Вертикальное озеленение, огромные цветки, долгоживущие.',mn:'Вилт — грибковое увядание побегов. Важно знать группу обрезки сорта.',pr:'350–1500 ₽',bl:'Май-октябрь (зависит от сорта)',loc:'sagenec.com/klematizy'},
+  fern:{n:'Папоротники',e:'Папоротники',img:'fern',d:'Незаменимы для проблемной тени. Атмосфера природного леса.',tags:[['тень','tb'],['влажные почвы','tt'],['без ухода','tg'],['30–100 см','tp']],pos:'Весна или ранняя осень. Корневище неглубоко. Почва лесная, с торфом, кислая.',uh:'Практически без ухода. Обрезать старые вайи весной. Полив в засуху.',pl:'Идеальны для тёмных мест, не болеют, почти не требуют ухода.',mn:'Медленно разрастаются. Теплолюбивые виды нуждаются в укрытии.',pr:'200–700 ₽',bl:'Не цветут — декоративная листва',loc:'sagenec.com/paporotniki'},
+  sedum:{n:'Очитки',e:'Очитки (седумы)',img:'sedum',d:'Суккуленты для альпийских горок и сухих мест. Почти без ухода.',tags:[['солнце','ta'],['засухоустойчивы','tg'],['альпийская горка','tt'],['5–60 см','tp']],pos:'Весна. Дренированная, даже бедная почва. Не терпят застоя воды.',uh:'Минимальный уход. Поливать только в сильную жару. Делить раз в 3–4 года.',pl:'Абсолютная засухоустойчивость, медонос, декоративны даже зимой.',mn:'Не переносят тяжёлую сырую почву. Высокие виды нуждаются в опоре.',pr:'150–400 ₽',bl:'Июль-октябрь',loc:'sagenec.com/ochitok'},
+  // === КУСТАРНИКИ ===
+  spirei:{n:'Спиреи',e:'Спиреи',img:'spirei',d:'Самые неприхотливые цветущие кустарники. Два типа: весенние (белые) и летние (розовые/малиновые).',tags:[['солнце/полутень','ta'],['зимостойкие','tg'],['0.5–2 м','tp']],pos:'Весна или осень. Расстояние 50–100 см. Почва любая, дренаж.',uh:'Весенние (Вангутта, Ниппонская): обрезать после цветения. Летние (японская, Бумальда): обрезать ранней весной.',pl:'Абсолютно неприхотливы, долгое цветение, много форм.',mn:'Без обрезки теряют форму и загущаются.',pr:'300–800 ₽',bl:'Май-июнь (весенние) / Июль-сент (летние)',loc:'sagenec.com/spirei'},
+  barbar:{n:'Барбарис',e:'Барбарис',img:'barbar',d:'Декоративный кустарник с яркой листвой. Колючая живая изгородь.',tags:[['солнце','ta'],['засухоустойчив','tg'],['0.5–3 м','tp'],['изгородь','tb']],pos:'Весна или осень. Расстояние 30–50 см (изгородь) или 80–100 см (одиночно). Почва любая.',uh:'Минимальный уход. Санитарная обрезка ранней весной. Зимостоек без укрытия.',pl:'Колючая изгородь, яркая осенняя листва и плоды, не требует ухода.',mn:'Острые шипы — работать в перчатках. Медленно растёт.',pr:'300–900 ₽',bl:'Апрель-май (цветки), осень (плоды)',loc:'sagenec.com/barbaris'},
+  lapchat:{n:'Лапчатки',e:'Лапчатки кустарниковые',img:'lapchat',d:'Рекордсмен по длительности цветения — с июня по октябрь!',tags:[['солнце/полутень','ta'],['0.5–1 м','tp'],['с июня по октябрь','tg']],pos:'Весна или осень. Расстояние 50–80 см. Почва любая, дренаж.',uh:'Обрезка ранней весной на 1/3. Засухоустойчива. Самое неприхотливое в своей группе.',pl:'Самое долгое цветение среди кустарников, абсолютная неприхотливость.',mn:'На тяжёлых сырых почвах угнетается.',pr:'250–700 ₽',bl:'Июнь-октябрь',loc:'sagenec.com/lapchhatka'},
+  siren:{n:'Сирень',e:'Сирень',img:'siren',d:'Сильный аромат в мае. Долговечные кустарники, живут десятилетиями.',tags:[['солнце','ta'],['2–5 м','tp'],['аромат','tc'],['зимостойкая','tg']],pos:'Конец лета — осень (авг-сент). Солнечное место. Расстояние 2–3 м. Нейтральная почва.',uh:'После цветения обязательно удалять отцветшие кисти. Прореживать раз в несколько лет.',pl:'Мощный аромат, долговечность, неприхотливость, зимостойкость.',mn:'Цветёт всего 2–3 недели. Вырастает крупной.',pr:'400–1500 ₽',bl:'Май',loc:'sagenec.com/siren'},
+  chubush:{n:'Чубушник',e:'Чубушник (садовый жасмин)',img:'chubush',d:'Запах настоящего жасмина в июне. Один из самых ароматных кустарников.',tags:[['солнце/полутень','ta'],['1–3 м','tp'],['аромат','tc'],['зимостойкий','tg']],pos:'Весна или осень. Почва любая. Расстояние 1.5–2 м.',uh:'Цветёт на прошлогодних побегах — обрезать только после цветения. Прореживать старые ветки.',pl:'Аромат жасмина, неприхотлив, быстро растёт.',mn:'Цветёт 2–3 недели. Без обрезки зарастает.',pr:'300–1000 ₽',bl:'Июнь',loc:'sagenec.com/chubushnik'},
+  deren:{n:'Дёрен',e:'Дёрен белый',img:'deren',d:'Декоративные ветки всю зиму! Отлично растёт в тени.',tags:[['тень/полутень','tb'],['1–3 м','tp'],['ветки зимой','tt'],['зимостойкий','tg']],pos:'Весна или осень. Хорошо в тенистых местах. Почва любая, терпит влажность.',uh:'Ранней весной удалять треть старых веток — молодые побеги ярче. Быстро растёт.',pl:'Ярко-красные или жёлтые ветки зимой, терпит глубокую тень.',mn:'Летом менее декоративен. Быстро разрастается.',pr:'300–1200 ₽',bl:'Апрель-май (цветки), зима (декор. ветки)',loc:'sagenec.com/deren'},
+  // === ПОЧВОПОКРОВНЫЕ ===
+  timyan:{n:'Тимьян',e:'Тимьян ползучий',img:'timyan',d:'Ароматный живой ковёр. При ходьбе издаёт запах тимьяна. Медонос.',tags:[['солнце','ta'],['5–15 см','tp'],['медонос','tg'],['аромат','tc']],pos:'Весна. Бедная дренированная почва. Расстояние 20–25 см. Между камнями.',uh:'Без полива и удобрений. Стричь после цветения для компактности.',pl:'Аромат при прикосновении, медонос, красив между камнями.',mn:'Не терпит застоя воды и тяжёлой почвы.',pr:'100–250 ₽',bl:'Июнь-август',loc:'sagenec.com/timyan'},
+  zhivuchka:{n:'Живучка',e:'Живучка (аюга)',img:'mnogolet',d:'Быстрый вечнозелёный ковёр для тени. Подавляет сорняки.',tags:[['тень/полутень','tb'],['10–20 см','tp'],['вечнозелёная','tg']],pos:'Весна. Любая почва. Расстояние 20–30 см — быстро заполнит пространство.',uh:'Без ухода. Весной убирать отмершие листья. Ограничивать разрастание.',pl:'Вечнозелёная, для тёмных мест, красивые листья у сортовых форм.',mn:'Очень активно расползается — нужны ограничители.',pr:'100–300 ₽',bl:'Май-июнь'},
+  yaskolka:{n:'Ясколка',e:'Ясколка войлочная',img:'mnogolet',d:'Серебристый ковёр с белыми цветками. Идеал для бордюров и откосов.',tags:[['солнце','ta'],['10–25 см','tp'],['засухоустойчива','tg']],pos:'Весна. Бедная дренированная почва. Расстояние 25–30 см.',uh:'Без ухода. После цветения срезать на треть — даёт второй рост.',pl:'Яркий серебристый цвет весь сезон, засухоустойчива.',mn:'В тени теряет компактность и серебристость.',pr:'100–250 ₽',bl:'Май-июнь'},
+  flossh:{n:'Флокс шиловидный',e:'Флокс шиловидный',img:'phlox',d:'Сплошной ковёр цветков весной. Один из лучших почвопокровников.',tags:[['солнце','ta'],['10–20 см','tp'],['засухоустойчив','tg']],pos:'Весна или осень. Дренированная почва. Расстояние 25–30 см.',uh:'После цветения стричь на треть — сохраняет компактность.',pl:'Сплошное цветение весной, вечнозелёный, засухоустойчив.',mn:'В тени и на сырых почвах редеет.',pr:'150–350 ₽',bl:'Май'},
+  barv:{n:'Барвинок',e:'Барвинок малый',img:'mnogolet',d:'Классический вечнозелёный почвопокровник для тени.',tags:[['тень','tb'],['10–20 см','tp'],['вечнозелёный','tg']],pos:'Весна или осень. Любая почва. Расстояние 25–30 см.',uh:'Без ухода. При загущении — прорезать лопатой.',pl:'Вечнозелёный, для глубокой тени, голубые цветки весной.',mn:'Медленно набирает силу первые 2 года.',pr:'100–250 ₽',bl:'Май'},
+  // === ЗЛАКИ ===
+  miskantus:{n:'Мискантус',e:'Мискантус китайский',img:'miskantus',d:'Крупный декоративный злак. Осенний акцент в саду. Метёлки украшают сад до зимы.',tags:[['солнце','ta'],['100–200 см','tp'],['осенний акцент','tt']],pos:'Весна (май). Солнечное место. Расстояние 1–1.5 м. Почва умеренно влажная.',uh:'Весной срезать на 20 см от земли. Не укрывать. Медленно стартует первые 2 года.',pl:'Мощный вертикальный акцент, красивые метёлки держатся до зимы.',mn:'Медленно набирает силу. Разрастается широко.',pr:'400–1200 ₽',bl:'Август-октябрь (метёлки)',loc:'sagenec.com/miskantus'},
+  molinia:{n:'Молиния',e:'Молиния голубая',img:'molinia',d:'Элегантный злак с тонкими дугообразными стеблями. Золотая осенняя окраска.',tags:[['солнце/полутень','ta'],['60–100 см','tp'],['влажная почва','tt']],pos:'Весна. Влажная кислая почва. Расстояние 40–60 см.',uh:'Срезать ранней весной. Не пересушивать. Не любит известь.',pl:'Изящные тонкие стебли, золотая осенняя окраска.',mn:'Не любит сухую почву и известковые грунты.',pr:'300–800 ₽',bl:'Август-сентябрь',loc:'sagenec.com/moliniya'},
+  veynik:{n:'Вейник',e:'Вейник остроцветковый',img:'veynik',d:'Неприхотливый злак для природных садов. Karl Foerster — самый популярный сорт.',tags:[['солнце/полутень','ta'],['100–150 см','tp'],['засухоустойчив','tg']],pos:'Весна. Любая почва. Расстояние 50–70 см. Очень нетребователен.',uh:'Срезать ранней весной. Делить раз в 3–5 лет.',pl:'Неприхотлив, красивые метёлки, хорошо в массивах.',mn:'Агрессивно разрастается — нужны ограничители.',pr:'250–600 ₽',bl:'Июль-октябрь',loc:'sagenec.com/veynik'},
+  osoka:{n:'Осоки',e:'Декоративные осоки',img:'osoka',d:'Низкие декоративные злаки для тени и влажных мест.',tags:[['тень/полутень','tb'],['20–50 см','tp'],['влажная почва','tt']],pos:'Весна. Влажная почва или берег водоёма. Расстояние 30–40 см.',uh:'Практически без ухода. Весной обрезать отмершие листья.',pl:'Для тени и сырых мест, разнообразные окраски листьев.',mn:'Некоторые виды агрессивно разрастаются.',pr:'200–500 ₽',bl:'Сезонная листва',loc:'sagenec.com/osoka'}
 };
 
 var FAQS = [
@@ -726,13 +975,47 @@ function goTab(id, btn) {
   document.querySelectorAll('.panel').forEach(function(p){p.classList.remove('on');});
   document.querySelectorAll('.nb').forEach(function(b){b.classList.remove('on');});
   document.getElementById('p-'+id).classList.add('on');
+  if (btn) btn.classList.add('on');
+}
+
+function subTab(id, btn) {
+  document.querySelectorAll('.subp').forEach(function(p){p.classList.remove('on');});
+  document.querySelectorAll('.stab').forEach(function(b){b.classList.remove('on');});
+  document.getElementById('sub-'+id).classList.add('on');
+  btn.classList.add('on');
+}
+
+function roseTab(id, btn) {
+  document.querySelectorAll('.rbp').forEach(function(p){p.classList.remove('on');});
+  document.querySelectorAll('[onclick^="roseTab"]').forEach(function(b){b.classList.remove('on');});
+  document.getElementById('rt-'+id).classList.add('on');
+  btn.classList.add('on');
+}
+
+function conTab(id, btn) {
+  document.querySelectorAll('.cbp').forEach(function(p){p.classList.remove('on');});
+  document.querySelectorAll('[onclick^="conTab"]').forEach(function(b){b.classList.remove('on');});
+  document.getElementById('ct-'+id).classList.add('on');
   btn.classList.add('on');
 }
 
 function buildList() {
-  document.getElementById('plist').innerHTML = Object.entries(P).map(function(e){
-    return '<button class="pb" onclick="showP(\''+e[0]+'\',this)">'+e[1].n+'</button>';
-  }).join('');
+  var flowerKeys = ['hosta','phlox','iris','lily','astilba','echi','heuch','pion','delph','clem','fern'];
+  var shrubKeys  = ['spirei','barbar','lapchat','siren','chubush','deren'];
+  var groundKeys = ['sedum','timyan','zhivuchka','yaskolka','flossh','barv'];
+  var grassKeys  = ['miskantus','molinia','veynik','osoka'];
+  function renderGroup(elId, keys) {
+    var el = document.getElementById(elId);
+    if (!el) return;
+    el.innerHTML = keys.filter(function(k){ return !!P[k]; }).map(function(k){
+      return '<button class="pb" onclick="showP(\'' + k + '\',this)">' + P[k].n + '</button>';
+    }).join('');
+  }
+  renderGroup('plist-flowers', flowerKeys);
+  renderGroup('plist-shrubs',  shrubKeys);
+  renderGroup('plist-ground',  groundKeys);
+  renderGroup('plist-grasses', grassKeys);
+  renderGroup('plist-ferns',   ['fern']);
 }
 
 function showP(k, btn) {
@@ -740,9 +1023,11 @@ function showP(k, btn) {
   document.querySelectorAll('.pb').forEach(function(b){b.classList.remove('on');});
   btn.classList.add('on');
   var imgHtml = (p.img && IMG[p.img]) ? '<img class="pimg" src="'+IMG[p.img]+'" alt="'+p.e+'" onerror="this.style.display=\'none\'">' : '';
+  var locHtml = p.loc ? '<a href="https://'+p.loc+'" target="_blank" style="display:inline-flex;align-items:center;gap:4px;background:#1a1a1a;color:#fff;border-radius:6px;padding:4px 9px;font-size:10px;font-weight:600;text-decoration:none;margin-bottom:8px">📍 Найти в питомнике</a>' : '';
+  var addrHtml = p.addr ? '<div style="display:inline-flex;align-items:center;gap:4px;background:var(--gnl);color:var(--gn);border-radius:6px;padding:4px 9px;font-size:10px;font-weight:700;margin-bottom:8px;margin-left:6px">🗺 Адрес: '+p.addr+'</div>' : '';
   var tagsHtml = p.tags.map(function(t){return '<span class="tag '+t[1]+'">'+t[0]+'</span>';}).join('');
   document.getElementById('pcontent').innerHTML =
-    imgHtml+
+    imgHtml+locHtml+addrHtml+
     '<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:6px">'+
     '<div><div class="pname">'+p.e+'</div><div class="pbloom">'+p.bl+'</div></div>'+
     '<span class="price-b">'+p.pr+'</span></div>'+
