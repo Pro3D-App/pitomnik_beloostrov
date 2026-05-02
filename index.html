@@ -165,6 +165,7 @@ ul{margin-left:15px}li{margin-bottom:3px;font-size:12px}
 /* Rose/Conifer sub panels */
 .rbp{display:none}.rbp.on{display:block}
 .cbp{display:none}.cbp.on{display:block}
+.rhbp{display:none}.rhbp.on{display:block}
 
 .back-btn{display:flex;align-items:center;gap:6px;background:none;border:none;color:var(--mu);font-size:13px;font-weight:500;font-family:inherit;cursor:pointer;padding:2px 0 10px;-webkit-tap-highlight-color:transparent}
 .back-btn svg{flex-shrink:0}
@@ -209,6 +210,11 @@ ul{margin-left:15px}li{margin-bottom:3px;font-size:12px}
         <span class="home-ico">🪴</span>
         <span class="home-lbl">Цветники</span>
         <span class="home-sub">миксбордер, горка, тень...</span>
+      </button>
+      <button class="home-tile" onclick="goTab('rhodod',document.getElementById('nb-home'))">
+        <span class="home-ico">🌸</span>
+        <span class="home-lbl">Рододендроны</span>
+        <span class="home-sub">сорта, уход, адреса</span>
       </button>
     </div>
   </div>
@@ -263,86 +269,78 @@ ul{margin-left:15px}li{margin-bottom:3px;font-size:12px}
 
 <div id="p-roses" class="panel">
   <button class="back-btn" onclick="goTab('home',document.getElementById('nb-home'))"><svg width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>На главную</button>
-
   <div class="card">
     <div class="sec">🌹 Розы</div>
     <a class="sector" href="https://sagenec.com/rozy" target="_blank">📍 Розы на сайте питомника</a>
-    <div class="sub-tabs">
-      <button class="stab on" onclick="roseTab('types',this)">Группы</button>
-      <button class="stab" onclick="roseTab('care',this)">Уход</button>
-      <button class="stab" onclick="roseTab('winter',this)">Зимовка</button>
+    <div class="sub-tabs" style="margin-top:8px">
+      <button class="stab on" onclick="roseGroupTab('kanad',this)">🏔 Канадские</button>
+      <button class="stab" onclick="roseGroupTab('engl',this)">🌸 Английские</button>
+      <button class="stab" onclick="roseGroupTab('florib',this)">🌺 Флорибунда</button>
+      <button class="stab" onclick="roseGroupTab('pletist',this)">🎋 Плетистые</button>
+      <button class="stab" onclick="roseGroupTab('rcare',this)">📋 Уход</button>
     </div>
   </div>
-  <div id="rt-types" class="rbp on">
+  <!-- КАНАДСКИЕ -->
+  <div id="rg-kanad" class="rbp on">
     <div class="card">
-      <div class="lbl">Группы роз в питомнике</div>
-      <div class="pgrid">
-        <div class="ib" style="border-radius:10px;border:1px solid var(--bd);padding:10px">
-          <div style="font-size:13px;font-weight:600;margin-bottom:4px">🌸 Чайно-гибридные</div>
-          <div style="font-size:11px;color:var(--mu);line-height:1.5">Крупные одиночные цветки, классика. Высота 60–100 см. Нужно укрытие.</div>
-        </div>
-        <div class="ib" style="border-radius:10px;border:1px solid var(--bd);padding:10px">
-          <div style="font-size:13px;font-weight:600;margin-bottom:4px">🌺 Флорибунда</div>
-          <div style="font-size:11px;color:var(--mu);line-height:1.5">Кисти мелких цветков. Длинное цветение. Чуть устойчивее ЧГ.</div>
-        </div>
-        <div class="ib" style="border-radius:10px;border:1px solid var(--bd);padding:10px">
-          <div style="font-size:13px;font-weight:600;margin-bottom:4px">🌿 Почвопокровные</div>
-          <div style="font-size:11px;color:var(--mu);line-height:1.5">Низкие, 30–60 см. Обильное цветение. Более морозостойкие.</div>
-        </div>
-        <div class="ib" style="border-radius:10px;border:1px solid var(--bd);padding:10px">
-          <div style="font-size:13px;font-weight:600;margin-bottom:4px">🏔 Парковые</div>
-          <div style="font-size:11px;color:var(--mu);line-height:1.5">Зимостойкие без укрытия! Включают канадские, шрабы. Идеал для С-З.</div>
-        </div>
-        <div class="ib" style="border-radius:10px;border:1px solid var(--bd);padding:10px">
-          <div style="font-size:13px;font-weight:600;margin-bottom:4px">🎋 Плетистые</div>
-          <div style="font-size:11px;color:var(--mu);line-height:1.5">До 3–5 м. Для арок, пергол. Укрытие обязательно.</div>
-        </div>
-        <div class="ib" style="border-radius:10px;border:1px solid var(--bd);padding:10px">
-          <div style="font-size:13px;font-weight:600;margin-bottom:4px">🌳 Штамбовые</div>
-          <div style="font-size:11px;color:var(--mu);line-height:1.5">Привитые на штамб. Требуют тщательного укрытия на зиму.</div>
-        </div>
-      </div>
-      <div class="warn" style="margin-top:10px">🌡️ <b>Для Ленобласти лучший выбор:</b> парковые (канадские, Кордес, Austin) и почвопокровные — зимуют без укрытия или с лёгким укрытием</div>
+      <div class="lbl">Нажмите на сорт</div>
+      <div style="background:var(--gnl);color:var(--gn);border-radius:8px;padding:7px 10px;font-size:11px;margin-bottom:10px">❄️ <b>Самые зимостойкие!</b> Зона 3–4, до −40°C. Зимуют без укрытия.</div>
+      <div class="pg" id="rlist-kanad"></div>
     </div>
-    <div class="card">
-      <div class="lbl">Популярные признаки</div>
-      <div class="tags" style="margin-top:4px">
-        <span class="tag tg">❄️ Морозостойкие: Канадские, Бордюрные</span>
-        <span class="tag tc">🌸 Ароматные: ЧГ, Остин, Парковые</span>
-        <span class="tag tb">🔄 Повторное цветение: Флорибунда, ЧГ</span>
-        <span class="tag ta">☀️ Солнце 6+ ч — обязательно для всех роз</span>
-      </div>
-    </div>
+    <div class="card det" id="rdet-kanad"><div id="rdc-kanad"></div></div>
   </div>
-  <div id="rt-care" class="rbp">
+  <!-- АНГЛИЙСКИЕ (Остин) -->
+  <div id="rg-engl" class="rbp">
+    <div class="card">
+      <div class="lbl">Нажмите на сорт</div>
+      <div style="background:var(--pul);color:var(--pu);border-radius:8px;padding:7px 10px;font-size:11px;margin-bottom:10px">🌸 <b>Роскошный аромат</b> и пышные цветки. Нужно лёгкое укрытие на зиму.</div>
+      <div class="pg" id="rlist-engl"></div>
+    </div>
+    <div class="card det" id="rdet-engl"><div id="rdc-engl"></div></div>
+  </div>
+  <!-- ФЛОРИБУНДА -->
+  <div id="rg-florib" class="rbp">
+    <div class="card">
+      <div class="lbl">Нажмите на сорт</div>
+      <div style="background:var(--aml);color:var(--am);border-radius:8px;padding:7px 10px;font-size:11px;margin-bottom:10px">🌺 <b>Долгое цветение</b> кистями. Нужно укрытие на зиму.</div>
+      <div class="pg" id="rlist-florib"></div>
+    </div>
+    <div class="card det" id="rdet-florib"><div id="rdc-florib"></div></div>
+  </div>
+  <!-- ПЛЕТИСТЫЕ -->
+  <div id="rg-pletist" class="rbp">
+    <div class="card">
+      <div class="lbl">Нажмите на сорт</div>
+      <div style="background:var(--tll);color:var(--tl);border-radius:8px;padding:7px 10px;font-size:11px;margin-bottom:10px">🎋 <b>Для арок и пергол.</b> До 3–5 м. Обязательное укрытие на зиму.</div>
+      <div class="pg" id="rlist-pletist"></div>
+    </div>
+    <div class="card det" id="rdet-pletist"><div id="rdc-pletist"></div></div>
+  </div>
+  <!-- УХОД -->
+  <div id="rg-rcare" class="rbp">
     <div class="card">
       <div class="sec">Уход за розами</div>
-      <div class="frule"><div class="frule-t">Посадка</div><div class="frule-b">Май или август–сентябрь. Яма 50×50×50 см. Место прививки — 5 см НИЖЕ уровня почвы (защита от вымерзания). Южная сторона, 6+ часов солнца.</div></div>
-      <div class="frule"><div class="frule-t">Почва</div><div class="frule-b">Питательная суглинистая, нейтральная (pH 6–7). Добавить перегной 2–3 ведра + суперфосфат 100г. Дренаж при тяжёлом грунте.</div></div>
-      <div class="frule"><div class="frule-t">Полив</div><div class="frule-b">Редкий и обильный (10–15 л под куст). Не по листьям — чёрная пятнистость! Лучше утром.</div></div>
-      <div class="frule"><div class="frule-t">Подкормки</div><div class="frule-b">Весна: азот (аммиачная селитра). До и после цветения: калийно-фосфорные. С августа — только калий, азот прекратить!</div></div>
-      <div class="frule"><div class="frule-t">Обрезка весной</div><div class="frule-b">Когда почки набухли (апрель–май). ЧГ и флорибунда — на 3–5 почек. Парковые — санитарная + прореживание. Плетистые — убрать старые ветки.</div></div>
+      <div class="frule"><div class="frule-t">Посадка</div><div class="frule-b">Май или август–сентябрь. Яма 50×50×50 см. Место прививки — 5 см НИЖЕ уровня почвы. Солнце 6+ часов.</div></div>
+      <div class="frule"><div class="frule-t">Подкормки</div><div class="frule-b">Весна: азот (Кемира). До/после цветения: фосфор-калий. С августа — только калий, азот прекратить!</div></div>
+      <div class="frule"><div class="frule-t">Болезни</div><div class="frule-b">Мучнистая роса и чёрная пятнистость. Профилактика: Фитоспорин или Топаз раз в 2–3 недели. Поливать только под корень.</div></div>
+      <div class="frule"><div class="frule-t">Обрезка</div><div class="frule-b">ЧГ и флорибунда — на 3–5 почек весной. Парковые — санитарная. Плетистые рамблеры — не обрезать! Цветут на прошлогодних ветках.</div></div>
     </div>
-  </div>
-  <div id="rt-winter" class="rbp">
     <div class="card">
-      <div class="sec">❄️ Зимовка роз в Ленобласти</div>
-      <div class="frule"><div class="frule-t">Когда укрывать</div><div class="frule-b">После первых заморозков −3–5°C, но до −8°C. Октябрь–начало ноября. Нельзя укрывать раньше — выпреют!</div></div>
-      <div class="frule"><div class="frule-t">Чайно-гибридные, флорибунда</div><div class="frule-b">Окучить землёй/торфом 20–30 см. Ветки связать, наклонить к земле, прижать шпильками. Укрыть лапником или спанбондом.</div></div>
-      <div class="frule"><div class="frule-t">Плетистые</div><div class="frule-b">Снять с опоры, свернуть кольцом, уложить на лапник. Сверху — лапник + спанбонд + плёнка (от воды).</div></div>
-      <div class="frule"><div class="frule-t">Парковые (канадские)</div><div class="frule-b">Достаточно окучить торфом 15–20 см. Лапник на ветки — по желанию. Самые зимостойкие.</div></div>
-      <div class="frule"><div class="frule-t">Раскрытие весной</div><div class="frule-b">В апреле, постепенно. Сначала проветривание, потом полное снятие укрытия. Не торопиться — возвратные морозы!</div></div>
-      <div class="warn">⚠️ <b>Главная причина гибели роз — не мороз, а выпревание</b> под мокрым укрытием. Нужна вентиляция!</div>
+      <div class="sec">❄️ Зимовка</div>
+      <div class="frule"><div class="frule-t">Когда укрывать</div><div class="frule-b">После первых −3–5°C, но до −8°C. Октябрь–начало ноября. Раньше нельзя — выпреют!</div></div>
+      <div class="frule"><div class="frule-t">ЧГ и флорибунда</div><div class="frule-b">Окучить торфом 20–30 см. Связать ветки, наклонить, укрыть лапником + спанбонд.</div></div>
+      <div class="frule"><div class="frule-t">Плетистые</div><div class="frule-b">Снять с опоры, свернуть кольцом, уложить на лапник. Сверху — лапник + спанбонд + плёнка.</div></div>
+      <div class="frule"><div class="frule-t">Канадские</div><div class="frule-b">Достаточно окучить торфом 15–20 см. Самые зимостойкие — специально для нашего климата.</div></div>
+      <div class="warn">⚠️ <b>Главная причина гибели — не мороз, а выпревание</b> под мокрым укрытием. Нужна вентиляция!</div>
     </div>
   </div>
 </div>
-
 <div id="p-conifer" class="panel">
   <button class="back-btn" onclick="goTab('home',document.getElementById('nb-home'))"><svg width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>На главную</button>
 
   <div class="card">
     <div class="sec">🌲 Хвойные растения</div>
-    <a class="sector" href="https://sagenec.com/hvoynye-rasteniya" target="_blank">📍 Хвойные на сайте питомника</a>
+    <a class="sector" href="https://sagenec.com/hvojnye-rasteniya" target="_blank">📍 Хвойные на сайте питомника</a>
     <div class="sub-tabs">
       <button class="stab on" onclick="conTab('list',this)">Виды</button>
       <button class="stab" onclick="conTab('care',this)">Посадка и уход</button>
@@ -455,6 +453,48 @@ ul{margin-left:15px}li{margin-bottom:3px;font-size:12px}
 </div>
 
 <!-- ═══ СВЕТ ═══ -->
+<div id="p-rhodod" class="panel">
+  <button class="back-btn" onclick="goTab('home',document.getElementById('nb-home'))"><svg width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>На главную</button>
+  <div class="card">
+    <div class="sec">🌸 Рододендроны</div>
+    <a class="sector" href="https://sagenec.com/rododendrony" target="_blank">📍 Рододендроны на сайте питомника</a>
+    <div style="background:#FFF3E0;border:1px solid #FB8C00;border-radius:8px;padding:8px 11px;font-size:11px;color:#5D4037;line-height:1.6;margin-top:8px">
+      ⚠️ <b>Кислая почва — главное условие!</b> pH 4.5–5.5. Обычная садовая земля убивает рododendron. Нужен специальный субстрат: верховой торф + хвойный опад.
+    </div>
+    <div class="sub-tabs" style="margin-top:10px">
+      <button class="stab on" onclick="rhododGroupTab('evergreen',this)">🌿 Вечнозелёные</button>
+      <button class="stab" onclick="rhododGroupTab('deciduous',this)">🍂 Листопадные</button>
+      <button class="stab" onclick="rhododGroupTab('rhcare',this)">📋 Уход</button>
+    </div>
+  </div>
+  <div id="rhg-evergreen" class="rhbp on">
+    <div class="card">
+      <div class="lbl">Нажмите на сорт</div>
+      <div class="pg" id="rhlist-evergreen"></div>
+    </div>
+    <div class="card det" id="rhdet-evergreen"><div id="rhdc-evergreen"></div></div>
+  </div>
+  <div id="rhg-deciduous" class="rhbp">
+    <div class="card">
+      <div class="lbl">Нажмите на сорт</div>
+      <div style="background:var(--gnl);color:var(--gn);border-radius:8px;padding:7px 10px;font-size:11px;margin-bottom:10px">🍂 <b>Листопадные азалии</b> — более зимостойкие. Осенью листья окрашиваются в яркие тона.</div>
+      <div class="pg" id="rhlist-deciduous"></div>
+    </div>
+    <div class="card det" id="rhdet-deciduous"><div id="rhdc-deciduous"></div></div>
+  </div>
+  <div id="rhg-rhcare" class="rhbp">
+    <div class="card">
+      <div class="sec">Посадка и уход</div>
+      <div class="frule"><div class="frt">Место</div><div class="frb">Полутень — лучший вариант. Прямое полуденное солнце обжигает листья. Идеально: восточная сторона, под ажурной кроной деревьев, защита от ветра.</div></div>
+      <div class="frule"><div class="frt">Почва</div><div class="frb">100% кислый субстрат: верховой (рыжий) торф + хвойный опад. Никакой золы и извести! pH 4.5–5.5. Яма 60×50 см — заполнить полностью специальным грунтом.</div></div>
+      <div class="frule"><div class="frt">Посадка</div><div class="frb">Май или ранняя осень. Корневой ком НЕ заглублять — на уровне почвы. Мульча хвойной корой 8–10 см. Корни поверхностные — не рыхлить!</div></div>
+      <div class="frule"><div class="frt">Полив</div><div class="frb">Только мягкой водой: дождевой или отстоянной. Подкислять: лимонная кислота 1 ч.л./10л раз в 2 недели летом. Не допускать пересыхания кома.</div></div>
+      <div class="frule"><div class="frt">Подкормки</div><div class="frb">Только специальные удобрения для рододендронов и вересковых. Весна–начало лета. Обычные удобрения защелачивают почву и губят растение.</div></div>
+      <div class="frule"><div class="frt">Зимовка</div><div class="frb">Взрослые зимостойкие сорта без укрытия. Молодые (первые 2–3 года) — притенить от мартовского солнца спанбондом. Листопадные зимостойких серий не укрывают.</div></div>
+    </div>
+  </div>
+</div>
+
 <div id="p-light" class="panel">
   <div class="card">
     <div class="sec">🌍 Бордюры по сторонам света</div>
@@ -882,6 +922,116 @@ var IMG = {
   mnogolet:'https://sagenec.com/image/cache/catalog/categor_image/MainP%20mnogoletniki-241x181.jpg'
 };
 
+var RHODOD = {
+  evergreen: [
+    {n:'Helsinki University',
+     img:'https://sagenec.com/image/cache/catalog/categor_image/MainP%20Rhododendron-241x181.jpg',
+     color:'Светло-розовый с пятнами',frost:'до −35°C',height:'до 2 м',bloom:'Май–июнь',
+     d:'Финская селекция. Один из самых морозостойких вечнозелёных рododendronов. Вынослив к условиям Северо-Запада.',
+     addr:'С2',url:'sagenec.com/rododendron-gibridnyj-helsinki-university-kontejner-5-0l'},
+    {n:"Pohjola's Daughter",
+     img:'https://sagenec.com/image/cache/catalog/categor_image/MainP%20Rhododendron-241x181.jpg',
+     color:'Градиентный: светло-розовый→белый',frost:'до −30°C',height:'до 1.2 м',bloom:'Май–июнь',
+     d:'Компактный округлый куст. Завораживающая градиентная окраска цветков. Блестящие зелёные листья.',
+     addr:'С2',url:'sagenec.com/listvennye-rasteniya/rododendron-gibridnyj-pohjola-s-daughter-kontejner-2-0l'},
+    {n:"Nova Zembla",
+     img:'https://sagenec.com/image/cache/catalog/categor_image/MainP%20Rhododendron-241x181.jpg',
+     color:'Красно-малиновый',frost:'до −28°C',height:'1.5–1.7 м',bloom:'Май–июнь',
+     d:'Один из лучших и популярных сортов. Крупные глянцевые тёмно-зелёные листья. Яркий цветовой акцент в саду.',
+     addr:'С2',url:'sagenec.com/rododendron-katevbinskij-nova-zembla-kontejner-1-0l'},
+    {n:"Cunningham's White",
+     img:'https://sagenec.com/image/cache/catalog/categor_image/MainP%20Rhododendron-241x181.jpg',
+     color:'Белый с жёлтым пятном',frost:'до −25°C',height:'1.5–2 м',bloom:'Май–июнь',
+     d:'Классический белоцветковый рododendron. Надёжный и выносливый. Один из самых популярных в продаже.',
+     addr:'С2',url:'sagenec.com/rododendrony'},
+    {n:"Boleslaw Chrobry / Royal Lilac",
+     img:'https://sagenec.com/image/cache/catalog/categor_image/MainP%20Rhododendron-241x181.jpg',
+     color:'Лилово-фиолетовый',frost:'до −25°C',height:'1.5–2 м',bloom:'Май–июнь',
+     d:'Польская серия Royal. Крупные яркие соцветия лилово-фиолетового цвета. Обильное цветение.',
+     addr:'С2',url:'sagenec.com/kustarniki-i-derevya/rododendron-gibridnyj-boleslaw-chrobry-royal-lilac-2-0l'},
+    {n:"Jan III Sobieski / Royal Amaranth",
+     img:'https://sagenec.com/image/cache/catalog/categor_image/MainP%20Rhododendron-241x181.jpg',
+     color:'Амарантово-пурпурный',frost:'до −25°C',height:'1.5–2 м',bloom:'Май–июнь',
+     d:'Польская серия Royal. Насыщенный пурпурно-амарантовый цвет цветков. Эффектное обильное цветение.',
+     addr:'С2',url:'sagenec.com/rododendrony'},
+    {n:"Catawbiense Album",
+     img:'https://sagenec.com/image/cache/catalog/categor_image/MainP%20Rhododendron-241x181.jpg',
+     color:'Белый',frost:'до −30°C',height:'до 2 м',bloom:'Май–июнь',
+     d:'Катевбинский гибрид. Чисто-белые цветки. Высокая зимостойкость, проверен в условиях С-З.',
+     addr:'С2',url:'sagenec.com/rododendrony'}
+  ],
+  deciduous: [
+    {n:"Northern Hi-Lights",
+     img:'https://sagenec.com/image/cache/catalog/categor_image/MainP%20Rhododendron-241x181.jpg',
+     color:'Бело-кремовый с золотым пятном',frost:'до −35°C',height:'0.9–1.3 м',bloom:'Май–июнь',
+     d:'Листопадная азалия серии Northern Lights. Приятный аромат. Осенью листья приобретают бордовый оттенок. Раскидистый шарообразный куст.',
+     addr:'С2',url:'sagenec.com/rododendron-listopadnyj-azaliya-northern-hi-lights-kontejner-3-0l'}
+  ]
+};
+
+var ROSES = {
+  kanad: [
+    {n:'Champlain',img:'https://sagenec.com/image/cache/catalog/categories%20main%20photo/roza-kanadskaya-champlain-241x181.jpg',
+     color:'Насыщенно-красный',aroma:'Слабый',height:'120 см',bloom:'Июнь–сент',zone:'3 (до −40°C)',
+     d:'Одна из лучших канадских роз. Практически непрерывное цветение. Полумахровые цветки 8 см.',
+     addr:'Ж3',url:'sagenec.com/roza-kanadskaya-parkovaya-champlain-kontejner-5-0l'},
+    {n:'John Davis',img:'',
+     color:'Розовый',aroma:'Слабый',height:'200 см (плетистая)',bloom:'Июнь–сент',zone:'3 (до −40°C)',
+     d:'Канадская плетистая. Побеги до 2–3 м. Густомахровые розовые цветки. Исключительная зимостойкость.',
+     addr:'Ж5',url:'sagenec.com/kanadskie'},
+    {n:'William Baffin',img:'',
+     color:'Тёмно-розовый',aroma:'Слабый',height:'250 см',bloom:'Июнь–сент',zone:'3 (до −40°C)',
+     d:'Мощная плетистая канадская роза. Цветки полумахровые, тёмно-розовые. Очень устойчива к болезням.',
+     addr:'Ж5',url:'sagenec.com/kanadskie'},
+    {n:'Martin Frobisher',img:'',
+     color:'Бледно-розовый',aroma:'Средний',height:'150 см',bloom:'Июнь–авг',zone:'3 (до −40°C)',
+     d:'Старейшая канадская роза серии Explorer. Бледно-розовые махровые цветки. Прямостоячий куст.',
+     addr:'Ж3',url:'sagenec.com/kanadskie'}
+  ],
+  engl: [
+    {n:'Princess Alexandra of Kent',img:'',
+     color:'Тёплый розовый',aroma:'Сильный чайный',height:'90 см',bloom:'Июнь–окт',zone:'5 (укрытие)',
+     d:'Необычайно крупные цветки 12 см. Тёплый розовый цвет. Аромат чайный, по мере цветения становится лимонным.',
+     addr:'Ж4',url:'sagenec.com/roza-ostina-princess-alexandra-of-kent-5-0l'},
+    {n:'Constance',img:'',
+     color:'Розовый с фиолетовым',aroma:'Очень сильный фруктовый',height:'100 см',bloom:'Июнь–окт',zone:'5 (укрытие)',
+     d:'Густомахровые цветки ~140 лепестков. Может использоваться как невысокая плетистая. Невероятно сильный аромат.',
+     addr:'Ж4',url:'sagenec.com/roza-anglijskaya-constance-kontejner-5-0l'},
+    {n:'The Generous Gardener',img:'',
+     color:'Нежно-розовый',aroma:'Сильный мускусный',height:'150 см',bloom:'Июнь–окт',zone:'5 (укрытие)',
+     d:'Нежные розовые цветки в старинном стиле. Сильный мускусный аромат. Можно выращивать как плетистую до 3 м.',
+     addr:'Ж4',url:'sagenec.com/anglijskie'}
+  ],
+  florib: [
+    {n:'Queen of Hearts',img:'',
+     color:'Лососево-оранжевый',aroma:'Слабый',height:'100 см',bloom:'Июнь–окт',zone:'5 (укрытие)',
+     d:'Насыщенный лососево-оранжевый цвет. Блюдцевидные цветки 10 см, ~120 лепестков. Обильное повторное цветение.',
+     addr:'Ж5',url:'sagenec.com/roza-floribunda-queen-of-hearts-4-0l'},
+    {n:'Cordula',img:'',
+     color:'Красно-оранжевый',aroma:'Слабый',height:'70 см',bloom:'Июнь–окт',zone:'5 (укрытие)',
+     d:'Шаровидные цветки 5 см. Красные и оранжевые тона. Часто используется в штамбовой форме.',
+     addr:'Ж5',url:'sagenec.com/roza-floribunda-cordula-5-0l'},
+    {n:'Pink Intuition',img:'',
+     color:'Розовый',aroma:'Тонкий',height:'150 см',bloom:'Май–заморозки',zone:'5 (укрытие)',
+     d:'Высокий куст с прямыми побегами. Волнообразное непрерывное цветение. Высокая устойчивость к морозам и болезням.',
+     addr:'Ж5',url:'sagenec.com/roza-chajno-gibridnaya-pink-intuition-kontejner-4-0l'}
+  ],
+  pletist: [
+    {n:'Laguna',img:'',
+     color:'Ярко-розовый',aroma:'Насыщенный фруктовый',height:'250 см',bloom:'Июнь–окт',zone:'5 (укрытие)',
+     d:'Немецкая селекция. Густомахровые цветки 11 см. Повторноцветущая. Высокая устойчивость к болезням и дождю.',
+     addr:'Ж5',url:'sagenec.com/roza-pletistaya-laguna-5-0l'},
+    {n:'Cesar',img:'',
+     color:'Нежно-розовый / ярко-розовый',aroma:'Сладкий терпкий',height:'200 см',bloom:'Июнь–сент',zone:'5 (укрытие)',
+     d:'Французская селекция. Бутоны раскрываются нежно-розовыми, внешние лепестки ярче. Махровые цветки 7 см.',
+     addr:'Ж5',url:'sagenec.com/roza-pletistaya-cesar-5-0l'},
+    {n:'Плетистая красная',img:'',
+     color:'Красный',aroma:'Средний',height:'500 см',bloom:'Июнь–авг',zone:'4 (лёгкое укрытие)',
+     d:'Побеги до 5 м. Пышные бутоны до 11 см. Высокая устойчивость к морозам, болезням и дождю.',
+     addr:'Ж5',url:'sagenec.com/roza-pletistaya-krasnaya-5l'}
+  ]
+};
+
 var P = {
   hosta:{n:'Хосты',e:'Хосты',img:'hosta',d:'Декоративная листва для тени. Ценится фактура и окраска листа.',tags:[['тень/полутень','tb'],['влажная почва','tt'],['до 15 лет без пересадки','tg'],['20–80 см','tp']],pos:'Май или авг-сент. Почка роста на 2–3 см ниже поверхности. Расстояние 40–80 см.',uh:'Полив в засуху, мульча. Азотная подкормка весной. Обрезка листьев осенью.',pl:'Долговечны (15–20 лет), не болеют, огромный выбор сортов.',mn:'Слизни — главный враг. Полная декоративность на 3-й год.',pr:'200–800 ₽',bl:'Июль-август',loc:'sagenec.com/hosty'},
   phlox:{n:'Флоксы',e:'Флоксы метельчатые',img:'phlox',d:'Классика сада. Пышные соцветия, яркий аромат.',tags:[['солнце/полутень','ta'],['зимостойкие','tg'],['60–120 см','tp'],['ароматные','tc']],pos:'Весна или ранняя осень. Корн. шейка на уровне почвы. Расстояние 50–60 см.',uh:'Регулярный полив. Удалять отцветшие метёлки. Делить каждые 4–5 лет.',pl:'Долгое цветение, сильный аромат, хороши в срезке.',mn:'Мучнистая роса при плохой вентиляции. Нельзя сажать густо.',pr:'150–450 ₽',bl:'Июль-сентябрь',loc:'sagenec.com/foks-metolchatyy'},
@@ -997,6 +1147,88 @@ function conTab(id, btn) {
   document.querySelectorAll('[onclick^="conTab"]').forEach(function(b){b.classList.remove('on');});
   document.getElementById('ct-'+id).classList.add('on');
   btn.classList.add('on');
+}
+
+function rhododGroupTab(id, btn) {
+  document.querySelectorAll('.rhbp').forEach(function(p){p.classList.remove('on')});
+  document.querySelectorAll('#p-rhodod .stab').forEach(function(b){b.classList.remove('on')});
+  document.getElementById('rhg-'+id).classList.add('on');
+  btn.classList.add('on');
+}
+
+function buildRhodod() {
+  ['evergreen','deciduous'].forEach(function(group) {
+    var el = document.getElementById('rhlist-'+group);
+    if (!el) return;
+    el.innerHTML = RHODOD[group].map(function(r,i){
+      return '<button class="pb" onclick="showRhodod(&quot;'+group+'&quot;,'+i+',this)">'+r.n+'</button>';
+    }).join('');
+  });
+}
+
+function showRhodod(group, idx, btn) {
+  var r = RHODOD[group][idx];
+  btn.closest('.pg').querySelectorAll('.pb').forEach(function(b){b.classList.remove('on')});
+  btn.classList.add('on');
+  var imgHtml = r.img ? '<img class="pimg" src="'+r.img+'" alt="'+r.n+'" onerror="this.style.display=&apos;none&apos;">' : '';
+  var addrHtml = r.addr ? '<div style="display:inline-flex;align-items:center;gap:4px;background:var(--gnl);color:var(--gn);border-radius:6px;padding:4px 9px;font-size:10px;font-weight:700;margin-bottom:8px;margin-left:6px">🗺 Адрес: '+r.addr+'</div>' : '';
+  var locHtml = r.url ? '<a href="https://'+r.url+'" target="_blank" style="display:inline-flex;align-items:center;gap:4px;background:#1a1a1a;color:#fff;border-radius:6px;padding:4px 9px;font-size:10px;font-weight:600;text-decoration:none;margin-bottom:8px">📍 На сайте питомника</a>' : '';
+  document.getElementById('rhdc-'+group).innerHTML =
+    imgHtml +
+    '<div class="pnm" style="margin-bottom:8px">'+r.n+'</div>' +
+    '<div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:8px">'+locHtml+addrHtml+'</div>' +
+    '<p class="pdsc">'+r.d+'</p>' +
+    '<div class="g2" style="margin-bottom:8px">' +
+    '<div class="ib"><div class="il">Цвет</div><div class="iv">'+r.color+'</div></div>' +
+    '<div class="ib"><div class="il">Мороз</div><div class="iv">'+r.frost+'</div></div>' +
+    '<div class="ib"><div class="il">Высота</div><div class="iv">'+r.height+'</div></div>' +
+    '<div class="ib"><div class="il">Цветение</div><div class="iv">'+r.bloom+'</div></div>' +
+    '</div>';
+  var det = document.getElementById('rhdet-'+group);
+  det.classList.add('on');
+  det.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+function roseGroupTab(id, btn) {
+  document.querySelectorAll('.rbp').forEach(function(p){p.classList.remove('on')});
+  document.querySelectorAll('#p-roses .stab').forEach(function(b){b.classList.remove('on')});
+  document.getElementById('rg-'+id).classList.add('on');
+  btn.classList.add('on');
+}
+
+function buildRoses() {
+  Object.keys(ROSES).forEach(function(group) {
+    var el = document.getElementById('rlist-'+group);
+    if (!el) return;
+    el.innerHTML = ROSES[group].map(function(r, i) {
+      return '<button class="pb" onclick="showRose(&quot;'+group+'&quot;,'+i+',this)">'+r.n+'</button>';
+    }).join('');
+  });
+}
+
+function showRose(group, idx, btn) {
+  var r = ROSES[group][idx];
+  btn.closest('.pg').querySelectorAll('.pb').forEach(function(b){b.classList.remove('on')});
+  btn.classList.add('on');
+  var imgHtml = r.img ? '<img class="pimg" src="'+r.img+'" alt="'+r.n+'" onerror="this.style.display=&apos;none&apos;">' : '';
+  var addrHtml = r.addr ? '<div style="display:inline-flex;align-items:center;gap:4px;background:var(--gnl);color:var(--gn);border-radius:6px;padding:4px 9px;font-size:10px;font-weight:700;margin-bottom:8px;margin-left:6px">🗺 Адрес: '+r.addr+'</div>' : '';
+  var locHtml = r.url ? '<a href="https://'+r.url+'" target="_blank" style="display:inline-flex;align-items:center;gap:4px;background:#1a1a1a;color:#fff;border-radius:6px;padding:4px 9px;font-size:10px;font-weight:600;text-decoration:none;margin-bottom:8px">📍 На сайте питомника</a>' : '';
+  document.getElementById('rdc-'+group).innerHTML =
+    imgHtml +
+    '<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:8px">' +
+    '<div class="pnm">'+r.n+'</div></div>' +
+    '<div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:8px">'+locHtml+addrHtml+'</div>' +
+    '<p class="pdsc">'+r.d+'</p>' +
+    '<div class="g2" style="margin-bottom:8px">' +
+    '<div class="ib"><div class="il">Цвет</div><div class="iv">'+r.color+'</div></div>' +
+    '<div class="ib"><div class="il">Аромат</div><div class="iv">'+r.aroma+'</div></div>' +
+    '<div class="ib"><div class="il">Высота</div><div class="iv">'+r.height+'</div></div>' +
+    '<div class="ib"><div class="il">Цветение</div><div class="iv">'+r.bloom+'</div></div>' +
+    '<div class="ib" style="grid-column:1/-1"><div class="il">Зимостойкость</div><div class="iv">'+r.zone+'</div></div>' +
+    '</div>';
+  var det = document.getElementById('rdet-'+group);
+  det.classList.add('on');
+  det.scrollIntoView({behavior:'smooth',block:'nearest'});
 }
 
 function buildList() {
@@ -1118,6 +1350,8 @@ var mb = new Blob([JSON.stringify(manifest)],{type:'application/json'});
 document.getElementById('manifest-link').href = URL.createObjectURL(mb);
 
 buildList();
+buildRoses();
+buildRhodod();
 buildFaq();
 buildLight();
 </script>
