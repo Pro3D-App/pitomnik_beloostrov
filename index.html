@@ -166,11 +166,13 @@ ul{margin-left:15px}li{margin-bottom:3px;font-size:12px}
 .rbp{display:none}.rbp.on{display:block}
 .cbp{display:none}.cbp.on{display:block}
 .rhbp{display:none}.rhbp.on{display:block}
+.cfbp{display:none}.cfbp.on{display:block}
 
 .back-btn{display:flex;align-items:center;gap:6px;background:none;border:none;color:var(--mu);font-size:13px;font-weight:500;font-family:inherit;cursor:pointer;padding:2px 0 10px;-webkit-tap-highlight-color:transparent}
 .back-btn svg{flex-shrink:0}
 .back-btn:active{opacity:.6}
 
+.srbp{display:none}.srbp.on{display:block}
 .sector{display:inline-flex;align-items:center;gap:5px;background:#1a1a1a;color:#fff;border-radius:8px;padding:5px 10px;font-size:11px;font-weight:600;margin-bottom:10px;text-decoration:none}
 </style>
 </head>
@@ -206,10 +208,20 @@ ul{margin-left:15px}li{margin-bottom:3px;font-size:12px}
         <span class="home-lbl">Плодовые</span>
         <span class="home-sub">яблони, груши, ягоды</span>
       </button>
+      <button class="home-tile" onclick="goTab('sorbus',document.getElementById('nb-home'))">
+        <span class="home-ico">🍒</span>
+        <span class="home-lbl">Рябины</span>
+        <span class="home-sub">декоративные и плодовые сорта</span>
+      </button>
       <button class="home-tile" onclick="goTab('flbeds',document.getElementById('nb-flbeds'))">
         <span class="home-ico">🪴</span>
         <span class="home-lbl">Цветники</span>
         <span class="home-sub">миксбордер, горка, тень...</span>
+      </button>
+      <button class="home-tile" onclick="goTab('sorbus',document.getElementById('nb-home'))">
+        <span class="home-ico">🌳</span>
+        <span class="home-lbl">Рябины</span>
+        <span class="home-sub">декоративные и плодовые сорта</span>
       </button>
       <button class="home-tile" onclick="goTab('rhodod',document.getElementById('nb-home'))">
         <span class="home-ico">🌸</span>
@@ -337,43 +349,58 @@ ul{margin-left:15px}li{margin-bottom:3px;font-size:12px}
 </div>
 <div id="p-conifer" class="panel">
   <button class="back-btn" onclick="goTab('home',document.getElementById('nb-home'))"><svg width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>На главную</button>
-
   <div class="card">
     <div class="sec">🌲 Хвойные растения</div>
     <a class="sector" href="https://sagenec.com/hvojnye-rasteniya" target="_blank">📍 Хвойные на сайте питомника</a>
-    <div class="sub-tabs">
-      <button class="stab on" onclick="conTab('list',this)">Виды</button>
-      <button class="stab" onclick="conTab('care',this)">Посадка и уход</button>
+    <div class="sub-tabs" style="margin-top:8px">
+      <button class="stab on" onclick="conGroupTab('tuja',this)">🌲 Туи</button>
+      <button class="stab" onclick="conGroupTab('eli',this)">🌲 Ели</button>
+      <button class="stab" onclick="conGroupTab('junip',this)">🌿 Можжевельники</button>
+      <button class="stab" onclick="conGroupTab('sosny',this)">🌲 Сосны</button>
+      <button class="stab" onclick="conGroupTab('cfcare',this)">📋 Уход</button>
     </div>
   </div>
-  <div id="ct-list" class="cbp on">
+  <div id="cg-tuja" class="cfbp on">
     <div class="card">
-      <div class="lbl">Туи</div>
-      <div class="ib" style="margin-bottom:7px"><div class="iv"><b>Туя западная Smaragd</b> — колонна до 5 м, тёмно-зелёная, классика живых изгородей. Солнце/полутень.<br><b>Brabant</b> — быстрорастущая, до 20 м, для высоких изгородей.<br><b>Danica</b> — шар 60–80 см, медленная, для бордюров.<br><b>Rheingold</b> — шар золотистый, до 1.5 м, осенью медный.</div></div>
+      <div class="lbl">Нажмите на сорт</div>
+      <div style="background:var(--gnl);color:var(--gn);border-radius:8px;padding:7px 10px;font-size:11px;margin-bottom:10px">⚠️ <b>Весенний ожог</b> — главная угроза туй. Укрывать мешковиной в феврале–марте.</div>
+      <div class="pg" id="cflist-tuja"></div>
     </div>
-    <div class="card">
-      <div class="lbl">Ели</div>
-      <div class="ib" style="margin-bottom:7px"><div class="iv"><b>Ель колючая (голубая)</b> — до 20 м, серебристо-голубая хвоя. Солнце.<br><b>Picea glauca Conica</b> — конус до 2 м, медленная, для акцентов.<br><b>Nidiformis (гнездовая)</b> — подушка 40–60 см, для рокариев.</div></div>
-    </div>
-    <div class="card">
-      <div class="lbl">Можжевельники</div>
-      <div class="ib" style="margin-bottom:7px"><div class="iv"><b>Skyrocket</b> — стрела до 4–5 м, голубовато-зелёный.<br><b>Blue Arrow</b> — узкий столб, 3–4 м, синеватая хвоя.<br><b>Pfitzeriana</b> — раскидистый, 0.5–1.5 м высота при 2–3 м ширине.<br><b>Сабина Variegata</b> — стелющийся, пятнистая хвоя.<br><b>Andorra Compact</b> — подушка, зимой фиолетовый.</div></div>
-    </div>
-    <div class="card">
-      <div class="lbl">Сосны, пихты, лиственницы</div>
-      <div class="ib"><div class="iv"><b>Сосна горная Mughus</b> — плотный куст 1–2 м, идеал для рокариев.<br><b>Сосна горная Pumilio</b> — ещё компактнее, 60 см.<br><b>Пихта корейская</b> — конус с фиолетовыми шишками, до 3 м.<br><b>Лиственница</b> — листопадная! Золотая осенью.</div></div>
-    </div>
-    <div class="warn">🌡️ Все хвойные питомника — зона 4b, зимуют без укрытия. Исключение: молодые туи в первый год — лёгкое укрытие от весеннего солнца (ожоги).</div>
+    <div class="card det" id="cfdet-tuja"><div id="cfdc-tuja"></div></div>
   </div>
-  <div id="ct-care" class="cbp">
+  <div id="cg-eli" class="cfbp">
     <div class="card">
-      <div class="sec">Посадка и уход за хвойными</div>
-      <div class="frule"><div class="frule-t">Когда сажать</div><div class="frule-b">Весна (апр–май) до распускания почек или осень (авг–сент). Контейнерные — всё лето. Пересадка переносится хуже, чем у лиственных.</div></div>
-      <div class="frule"><div class="frule-t">Яма и почва</div><div class="frule-b">Глубина 60–80 см, ширина 2× кома. Дренаж 15–20 см (щебень). Для туй и елей — нейтральная почва. Для можжевельников — добавить песок. Для пихт и лиственниц — лёгкие, кислые почвы.</div></div>
-      <div class="frule"><div class="frule-t">Полив</div><div class="frule-b">В первый год — регулярно (раз в неделю 10–20 л). Дождевание кроны в жару — хвоя очень благодарна. Взрослые — засухоустойчивы.</div></div>
-      <div class="frule"><div class="frule-t">Удобрения</div><div class="frule-b">Только специальные — для хвойных (Агрикола, Фертика). Общие с азотом — не давать: провоцируют рост, снижают зимостойкость. Раз в год весной.</div></div>
-      <div class="frule"><div class="frule-t">Весенний ожог</div><div class="frule-b">Главная проблема у туй и елей: февраль–март — яркое солнце при мёрзлой земле. Укрывать мешковиной или спанбондом с февраля. После схода снега — обязателен полив.</div></div>
-      <div class="frule"><div class="frule-t">Обрезка</div><div class="frule-b">Туи для изгороди: стрижка 2× в сезон (июнь и август). Можжевельники: только санитарная. Ели и сосны: не обрезать — нарушает форму.</div></div>
+      <div class="lbl">Нажмите на сорт</div>
+      <div style="background:var(--col);color:var(--co);border-radius:8px;padding:7px 10px;font-size:11px;margin-bottom:10px">⚠️ <b>Ель Коника</b> — обязательное притенение от мартовского солнца! Иначе осыпается хвоя.</div>
+      <div class="pg" id="cflist-eli"></div>
+    </div>
+    <div class="card det" id="cfdet-eli"><div id="cfdc-eli"></div></div>
+  </div>
+  <div id="cg-junip" class="cfbp">
+    <div class="card">
+      <div class="lbl">Нажмите на сорт</div>
+      <div style="background:var(--col);color:var(--co);border-radius:8px;padding:7px 10px;font-size:11px;margin-bottom:10px">⚠️ <b>Нельзя сажать рядом с грушами и яблонями!</b> Общий грибок ржавчины. Расстояние не менее 5 м.</div>
+      <div class="pg" id="cflist-junip"></div>
+    </div>
+    <div class="card det" id="cfdet-junip"><div id="cfdc-junip"></div></div>
+  </div>
+  <div id="cg-sosny" class="cfbp">
+    <div class="card">
+      <div class="lbl">Нажмите на сорт</div>
+      <div class="pg" id="cflist-sosny"></div>
+    </div>
+    <div class="card det" id="cfdet-sosny"><div id="cfdc-sosny"></div></div>
+  </div>
+  <div id="cg-cfcare" class="cfbp">
+    <div class="card">
+      <div class="sec">Посадка и уход</div>
+      <div class="frule"><div class="frule-t">Когда сажать</div><div class="frule-b">Весна (апр–май) до распускания почек или осень (авг–сент). Контейнерные — всё лето, но не в жару. Пересадка переносится хуже, чем у лиственных.</div></div>
+      <div class="frule"><div class="frule-t">Яма и почва</div><div class="frule-b">Глубина 60–80 см, ширина в 2 раза больше кома. Дренаж 15–20 см (щебень/гравий). Туи, ели — нейтральная почва. Можжевельники — добавить песок до 1/3. Корневую шейку не заглублять!</div></div>
+      <div class="frule"><div class="frule-t">Полив</div><div class="frule-b">В первый год — раз в неделю 10–20 л. Дождевание кроны в жару очень полезно. Взрослые растения засухоустойчивы, но в первое лето поливать обязательно.</div></div>
+      <div class="frule"><div class="frule-t">Удобрения</div><div class="frule-b">Только специальные для хвойных (Агрикола, Фертика Хвойное). Обычные с азотом не давать — провоцируют рост в ущерб зимостойкости. Один раз весной.</div></div>
+      <div class="frule"><div class="frule-t">Весенний ожог туй</div><div class="frule-b">Февраль–март: яркое солнце при ещё мёрзлой земле — хвоя горит, а корни не могут дать воду. Укрывать мешковиной или спанбондом с февраля. Первый полив после схода снега обязателен.</div></div>
+      <div class="frule"><div class="frule-t">Обрезка</div><div class="frule-b">Туи для изгороди: стрижка 2 раза в сезон (июнь и август). Можжевельники: только санитарная. Ели и сосны: не обрезать — нарушает природную форму. Колонновидные можжевельники: связывать на зиму от снега.</div></div>
+      <div class="frule"><div class="frule-t">Мульча</div><div class="frule-b">Кора хвойных 5–8 см — сохраняет влагу, поддерживает слабокислую реакцию, подавляет сорняки. Не касаться ствола!</div></div>
     </div>
   </div>
 </div>
@@ -495,6 +522,42 @@ ul{margin-left:15px}li{margin-bottom:3px;font-size:12px}
   </div>
 </div>
 
+<div id="p-sorbus" class="panel">
+  <button class="back-btn" onclick="goTab('home',document.getElementById('nb-home'))"><svg width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>На главную</button>
+  <div class="card">
+    <div class="sec">🍒 Рябины</div>
+    <a class="sector" href="https://sagenec.com/ryabiny" target="_blank">📍 Рябины на сайте питомника</a>
+    <div class="sub-tabs" style="margin-top:8px">
+      <button class="stab on" onclick="sorbusTab('dekor',this)">🌳 Декоративные</button>
+      <button class="stab" onclick="sorbusTab('plod',this)">🍎 Плодовые</button>
+      <button class="stab" onclick="sorbusTab('aronia',this)">⚫ Арония</button>
+    </div>
+  </div>
+  <div id="sb-dekor" class="srbp on">
+    <div class="card">
+      <div class="lbl">Нажмите на сорт</div>
+      <div style="background:var(--gnl);color:var(--gn);border-radius:8px;padding:7px 10px;font-size:11px;margin-bottom:10px">🌳 Декоративные рябины — для красоты сада. Ягоды остаются на ветках всю зиму, привлекают птиц.</div>
+      <div class="pg" id="sblist-dekor"></div>
+    </div>
+    <div class="card det" id="sbdet-dekor"><div id="sbdc-dekor"></div></div>
+  </div>
+  <div id="sb-plod" class="srbp">
+    <div class="card">
+      <div class="lbl">Нажмите на сорт</div>
+      <div style="background:var(--aml);color:var(--am);border-radius:8px;padding:7px 10px;font-size:11px;margin-bottom:10px">🍎 Плодовые рябины — съедобные ягоды без горечи. Используются в заготовках, варенье, соках.</div>
+      <div class="pg" id="sblist-plod"></div>
+    </div>
+    <div class="card det" id="sbdet-plod"><div id="sbdc-plod"></div></div>
+  </div>
+  <div id="sb-aronia" class="srbp">
+    <div class="card">
+      <div class="lbl">Нажмите на сорт</div>
+      <div style="background:var(--pul);color:var(--pu);border-radius:8px;padding:7px 10px;font-size:11px;margin-bottom:10px">⚫ Арония (черноплодная рябина) — съедобные чёрные ягоды, яркая осенняя листва. Очень неприхотлива.</div>
+      <div class="pg" id="sblist-aronia"></div>
+    </div>
+    <div class="card det" id="sbdet-aronia"><div id="sbdc-aronia"></div></div>
+  </div>
+</div>
 <div id="p-light" class="panel">
   <div class="card">
     <div class="sec">🌍 Бордюры по сторонам света</div>
@@ -969,6 +1032,246 @@ var RHODOD = {
   ]
 };
 
+var SORBUS = {
+  dekor: [
+    {n:'Плакучая',height:'до 6 м',fruit:'Красные, 6-8 мм',bloom:'Май-июнь',d:'Декоративная форма с поникающими ветвями. Красивые красные гроздья с июля. Птицы слетаются уже в октябре.',addr:'Ф2',url:'sagenec.com/ryabina-plakuchaya-ryabina-obyknovennaya'},
+    {n:'Белая Кашмирская',height:'до 6 м',fruit:'Белые/кремовые, долго висят',bloom:'Май',d:'Редкая рябина с белыми плодами. Необычный декоративный эффект — белые кисти на фоне зелени и осенней листвы.',addr:'',url:'sagenec.com/ryabina-belaya-kashmirskaya-kontejner-7-0l'},
+    {n:'Обыкновенная',height:'до 10 м',fruit:'Красные, горькие',bloom:'Май-июнь',d:'Классическая рябина. Зона 3, абсолютно зимостойкая. Птичья кормушка осенью. Красивая осенняя листва.',addr:'Ф11',url:'sagenec.com/ryabiny'}
+  ],
+  plod: [
+    {n:'Гранатная',height:'до 4-6 м',fruit:'Бордово-красные, 1.2-1.6 г, без горечи',bloom:'Май',d:'Гибрид рябины и боярышника. Вкус кисло-сладкий без горечи и терпкости. Медонос. Урожай до 40 кг.',addr:'Ж12',url:'sagenec.com/ryabina-granatnaya-kontejner-7-0l'},
+    {n:'Гранатовая',height:'до 4 м',fruit:'Бордово-красные, гранёные',bloom:'Май',d:'Гибрид рябины и кроваво-красного боярышника. Мякоть жёлтая, сочная. Вкус без горечи.',addr:'Ф11',url:'sagenec.com/ryabina-granatovaya-kontejner-7-0l'},
+    {n:'Невежинская',height:'до 8 м',fruit:'Оранжево-красные, кисло-сладкие',bloom:'Май',d:'Один из лучших плодовых сортов. Частично самоплодный. Зона С-З России. Плоды без горечи, универсального назначения.',addr:'',url:'sagenec.com/ryabina-nevezhinskaya-kontejner-5-0l'},
+    {n:'Титан',height:'до 3-5 м',fruit:'Тёмно-вишнёвые, 1.2 г',bloom:'Май',d:'Самоплодный сорт. Урожай до 40-50 кг с дерева. Плоды кисло-сладкие. Медонос. Компактная округлая крона.',addr:'',url:'sagenec.com/ryabina-titan-7-0l'}
+  ],
+  aroniya: [
+    {n:'Арония черноплодная',height:'1.5-3 м',fruit:'Чёрные, сочные, терпко-сладкие',bloom:'Май-июнь',d:'Лекарственный кустарник. Плоды снижают давление, богаты витаминами. Осенью листва становится ярко-красной — очень декоративна! Плодоношение с 4-го года.',addr:'Ж6, Ф11',url:'sagenec.com/aroniya-chernoplodnaya-ryabina-kontejner-3-0l'}
+  ]
+};
+
+var SORBUS = {
+  dekor: [
+    {n:'Рябина обыкновенная',color:'Оранжево-красные ягоды',height:'до 10 м',bloom:'Май-июнь',fruit:'Сентябрь',
+     addr:'Ф11',d:'Классическая рябина. Ягоды горьковатые, но птицы обожают. Очень зимостойка — зона 3. Красивая осенняя окраска листьев.',
+     url:'sagenec.com/ryabiny'},
+    {n:'Рябина Кёне (белоплодная)',color:'Белые ягоды',height:'до 3-4 м',bloom:'Май',fruit:'Сентябрь–зима',
+     addr:'',d:'Белые ягоды висят на ветках всю зиму. Компактное деревце. Очень декоративна в снежный период.',
+     url:'sagenec.com/ryabiny'},
+    {n:'Рябина ария (серебристая)',color:'Красные ягоды, серебристые листья',height:'до 6 м',bloom:'Май',fruit:'Сентябрь',
+     addr:'',d:'Листья снизу серебристо-белые — очень декоративны на ветру. Красные ягоды. Устойчива к засухе.',
+     url:'sagenec.com/ryabiny'},
+  ],
+  plod: [
+    {n:'Невежинская',color:'Оранжево-красные ягоды',height:'до 5-8 м',bloom:'Май-июнь',fruit:'Ранняя осень',
+     addr:'',d:'Классика плодовых рябин. Ягоды кисло-сладкие БЕЗ горечи и терпкости. Самоплодный сорт. Включён в реестр с 1947 г. Зоны 1 и 2 (Северный, Северо-Западный).',
+     url:'sagenec.com/ryabina-nevezhinskaya-kontejner-5-0l'},
+    {n:'Гранатная',color:'Бордово-красные ягоды с сизым налётом',height:'до 4-6 м',bloom:'Май-июнь',fruit:'Сентябрь',
+     addr:'Ж12',d:'Гибрид рябины и боярышника. Ягоды гранёные, кисло-сладкие, без горечи. Мякоть жёлтая, сочная. Отличный медонос.',
+     url:'sagenec.com/ryabina-granatnaya-kontejner-7-0l'},
+    {n:'Гранатовая',color:'Бордово-красные ягоды',height:'до 4 м',bloom:'Май-июнь',fruit:'Сентябрь',
+     addr:'Ф11',d:'Гибрид с кроваво-красным боярышником. Ягоды без горечи, кисло-сладкие. Густая раскидистая крона.',
+     url:'sagenec.com/ryabina-granatovaya-kontejner-7-0l'},
+    {n:'Титан',color:'Тёмно-вишнёвые ягоды с восковым налётом',height:'3-5 м',bloom:'Май-июнь',fruit:'Сентябрь',
+     addr:'',d:'Самоплодный. Урожай до 40–50 кг с дерева. Ягоды округлые, мякоть интенсивно-жёлтая. Медонос.',
+     url:'sagenec.com/ryabina-titan-7-0l'},
+  ],
+  aronia: [
+    {n:'Арония черноплодная (3л)',color:'Чёрные ягоды',height:'1.5-3 м',bloom:'Май-июнь',fruit:'Август-сентябрь',
+     addr:'Ж6',d:'Очень неприхотливый кустарник. Ягоды богаты витаминами. Осенью листья ярко-красные. Плодоношение с 4-го года.',
+     url:'sagenec.com/aroniya-chernoplodnaya-ryabina-kontejner-3-0l'},
+    {n:'Арония черноплодная (2л)',color:'Чёрные ягоды',height:'1.5-3 м',bloom:'Май-июнь',fruit:'Август-сентябрь',
+     addr:'Ф11',d:'Молодой саженец в контейнере 2л. Те же характеристики — неприхотлива, декоративна, полезные ягоды.',
+     url:'sagenec.com/ryabiny/aroniya-chernoplodnaya-ryabina-kontejner-2-0l'},
+  ]
+};
+
+var CONIFERS = {
+  tuja: [
+    {n:'Смарагд (Smaragd)',
+     img:'https://sagenec.com/image/cache/catalog/categor_image/MainP%20tui-241x181.jpg',
+     forma:'Узкая пирамида',height:'до 5 м',growth:'+10–15 см/год',light:'Солнце/полутень',
+     d:'Самый популярный сорт для живых изгородей. Плотная тёмно-зелёная крона держит форму без обрезки. Не желтеет зимой.',
+     plus:'Не требует обрезки. Плотная форма. Зимой не буреет.',
+     minus:'Медленный рост — нужно ждать 5–7 лет для изгороди.',
+     dist:'60–80 см в ряду',url:'sagenec.com/tui'},
+    {n:'Брабант (Brabant)',
+     img:'https://sagenec.com/image/cache/catalog/categor_image/MainP%20tui-241x181.jpg',
+     forma:'Колонна',height:'до 8 м',growth:'+25–30 см/год',light:'Солнце/полутень',
+     d:'Самый быстрорастущий сорт. Изгородь вырастает за 3–4 года. Крона чуть рыхлее Смарагда. Зимой может слегка буреть — это нормально, весной зеленеет.',
+     plus:'Очень быстрый рост. Высокая плотная изгородь за несколько лет.',
+     minus:'Нужна обрезка 2–3 раза в сезон. Зимой слегка буреет.',
+     dist:'80–100 см в ряду',url:'sagenec.com/tui'},
+    {n:'Даника (Danica)',
+     img:'https://sagenec.com/image/cache/catalog/categor_image/MainP%20tui-241x181.jpg',
+     forma:'Шар',height:'до 80 см',growth:'+4–5 см/год',light:'Солнце/полутень',
+     d:'Идеальный карликовый шар. Сама держит форму — не нужно стричь. Для бордюров, рокариев, контейнеров. Очень медленная.',
+     plus:'Идеальная форма без стрижки. Компактна. Для маленьких садов.',
+     minus:'Очень медленный рост. Заметный размер — через 10 лет.',
+     dist:'Одиночно или 50 см в бордюре',url:'sagenec.com/tui'},
+    {n:'Холмструп (Holmstrup)',
+     img:'https://sagenec.com/image/cache/catalog/categor_image/MainP%20tui-241x181.jpg',
+     forma:'Плотная пирамида',height:'до 3–4 м',growth:'+8–10 см/год',light:'Солнце/полутень',
+     d:'Плотная узкая пирамида. Медленнее Смарагда, зато зимой совсем не буреет. Идеал для небольших садов где нужна вертикаль.',
+     plus:'Не буреет зимой. Плотная форма. Хорошо для маленьких садов.',
+     minus:'Медленный рост.',
+     dist:'60–80 см в ряду',url:'sagenec.com/tui'}
+  ],
+  eli: [
+    {n:'Ель канадская Коника (Conica)',
+     img:'https://sagenec.com/image/cache/catalog/categor_image/MainP%20eli-241x181.jpg',
+     forma:'Правильный конус',height:'до 2–3 м',growth:'+3–5 см/год',light:'Полутень!',
+     d:'Идеальный плотный конус, форма не требует стрижки. Очень деликатна к весеннему солнцу — обязательно притенять в феврале–марте спанбондом.',
+     plus:'Идеальная форма без ухода. Плотная изумрудная хвоя.',
+     minus:'⚠️ Горит на мартовском солнце! Первые 3 года — обязательное укрытие.',
+     dist:'Одиночно, 1–1.5 м в группе',url:'sagenec.com/eli'},
+    {n:'Ель голубая Глаука Глобоза (Glauca Globosa)',
+     img:'https://sagenec.com/image/cache/catalog/categor_image/MainP%20eli-241x181.jpg',
+     forma:'Шар/подушка',height:'до 1.5–2 м',growth:'+7–10 см/год',light:'Солнце',
+     d:'Плотная голубовато-серебристая подушка. Эффектный акцент в саду. Зимостойка. Не требует обрезки.',
+     plus:'Красивый голубой цвет весь год. Нет болезней. Без ухода.',
+     minus:'Медленный рост. Дорогостоящий посадочный материал.',
+     dist:'Одиночно',url:'sagenec.com/eli'},
+    {n:'Ель колючая голубая (Pungens Hoopsii)',
+     img:'https://sagenec.com/image/cache/catalog/categor_image/MainP%20eli-241x181.jpg',
+     forma:'Пирамида',height:'до 15 м',growth:'+15–25 см/год',light:'Солнце',
+     d:'Классическая голубая ель. Самый ярко-голубой сорт. Хвоя очень колючая. Зимостойка, нетребовательна. Для крупных участков.',
+     plus:'Яркий серебристо-голубой цвет. Зимостойка. Неприхотлива.',
+     minus:'Вырастает очень крупной. Острая хвоя.',
+     dist:'Одиночно, 3–4 м от построек',url:'sagenec.com/eli'},
+    {n:'Ель обыкновенная Нидиформис (Nidiformis)',
+     img:'https://sagenec.com/image/cache/catalog/categor_image/MainP%20eli-241x181.jpg',
+     forma:'Плоская подушка',height:'40–60 см',growth:'+3–5 см/год',light:'Солнце/полутень',
+     d:'Гнездовидная карликовая ель. Плоская подушка с углублением в центре. Для рокариев и альпийских горок. Очень медленная.',
+     plus:'Оригинальная форма. Компактна. Долговечна.',
+     minus:'Очень медленный рост.',
+     dist:'Одиночно в рокарии',url:'sagenec.com/eli'}
+  ],
+  junip: [
+    {n:'Можжевельник скальный Blue Arrow',
+     img:'https://sagenec.com/image/cache/catalog/categor_image/MainP%20mozhzhevelnik-241x181.jpg',
+     forma:'Узкая колонна',height:'до 4–5 м',growth:'+15–20 см/год',light:'Солнце',
+     d:'Жёсткие побеги плотно прижаты к стволу. Хвоя серо-голубая. Нижние ветки сохраняются от самого основания. Выдерживает до −28°C.',
+     plus:'Узкая форма, не разваливается. Голубой цвет. Нижние ветки не облетают.',
+     minus:'Колонновидные сорта: связывать на зиму от снеговой нагрузки.',
+     dist:'0.5–1 м в ряду',url:'sagenec.com/mozhzhevelnik-skalnyj-blue-arrow-3-0l'},
+    {n:'Можжевельник скальный Скайрокет (Skyrocket)',
+     img:'https://sagenec.com/image/cache/catalog/categor_image/MainP%20mozhzhevelnik-241x181.jpg',
+     forma:'Узкая стрела',height:'до 5–8 м',growth:'+20 см/год',light:'Солнце',
+     d:'Самый узкий и высокий колонновидный можжевельник. Голубовато-зелёная хвоя. Мощный вертикальный акцент. Зимостоек.',
+     plus:'Очень узкая стрела вверх. Эффектный акцент. Быстрее Blue Arrow.',
+     minus:'Вырастает очень высоким. Связывать от снега.',
+     dist:'1 м в ряду',url:'sagenec.com/mozhzhevelniki'},
+    {n:'Можжевельник горизонтальный Блю Чип (Blue Chip)',
+     img:'https://sagenec.com/image/cache/catalog/categor_image/MainP%20mozhzhevelnik-241x181.jpg',
+     forma:'Стелющийся ковёр',height:'20–30 см',growth:'+10 см/год',light:'Солнце',
+     d:'Стелющийся можжевельник с ярко-голубой хвоей. Разрастается до 1.5–2 м в ширину. Для откосов, рокариев, между камнями. Без обрезки.',
+     plus:'Не требует ухода. Голубой цвет. Подавляет сорняки.',
+     minus:'Медленно разрастается. Не подходит для тени.',
+     dist:'1–1.5 м между растениями',url:'sagenec.com/mozhzhevelniki'},
+    {n:'Можжевельник китайский Стрикта (Stricta)',
+     img:'https://sagenec.com/image/cache/catalog/categor_image/MainP%20mozhzhevelnik-241x181.jpg',
+     forma:'Голубовато-зелёная колонна',height:'до 3 м',growth:'+10–15 см/год',light:'Солнце',
+     d:'Компактная плотная колонна голубовато-зелёного цвета. Хорошо подходит для живых изгородей меньшей высоты. Зимостоек.',
+     plus:'Компактная форма. Для средних изгородей.',
+     minus:'Острая хвоя — работать в перчатках.',
+     dist:'60–80 см в ряду',url:'sagenec.com/mozhzhevelniki'}
+  ],
+  sosny: [
+    {n:'Сосна горная Мопс (Pinus mugo Mops)',
+     img:'https://sagenec.com/image/cache/catalog/categor_image/MainP%20sosna-241x181.jpg',
+     forma:'Идеальный шар',height:'до 1–1.5 м',growth:'+5–7 см/год',light:'Солнце',
+     d:'Самый популярный карликовый сорт сосны горной. Плотный аккуратный шар. Зимостойкая, засухоустойчивая. Весной прищипывать молодые свечи для контроля размера.',
+     plus:'Идеальная форма. Абсолютно зимостойка. Засухоустойчива.',
+     minus:'Медленный рост. Нужна ежегодная прищипка свечей.',
+     dist:'1–1.5 м одиночно',url:'sagenec.com/sosny'},
+    {n:'Сосна горная Пумилио (Pumilio)',
+     img:'https://sagenec.com/image/cache/catalog/categor_image/MainP%20sosna-241x181.jpg',
+     forma:'Распластанный кустарник',height:'до 1 м',growth:'+5–7 см/год',light:'Солнце',
+     d:'Приземистый широкий кустарник до 2 м в ширину. Для больших площадей, откосов. Ветви горизонтальные, декоративные. Без ухода.',
+     plus:'Неприхотлива. Для больших площадей. Без ухода.',
+     minus:'Разрастается широко — нужно место.',
+     dist:'1.5–2 м между растениями',url:'sagenec.com/sosny'},
+    {n:'Сосна чёрная (Pinus nigra)',
+     img:'https://sagenec.com/image/cache/catalog/categor_image/MainP%20sosna-241x181.jpg',
+     forma:'Пирамида/конус',height:'до 10–20 м',growth:'+25–35 см/год',light:'Солнце',
+     d:'Тёмно-зелёная сосна с длинными иглами. Очень устойчива к городским условиям, засухе, загазованности. Для крупных участков.',
+     plus:'Устойчива к городским условиям. Быстрорастущая. Зимостойка.',
+     minus:'Вырастает очень крупной.',
+     dist:'3–4 м от построек',url:'sagenec.com/sosny'}
+  ]
+};
+
+var CONIFERS = {
+  tuja: [
+    {n:'Smaragd',form:'Узкопирамидальная',height:'до 5 м',grow:'+10-15 см/год',color:'Ярко-зелёная, не буреет зимой',use:'Живая изгородь, солитер',
+     d:'Самая популярная туя для изгородей. Плотная, не требует стрижки. Расстояние в ряду 60–80 см.',
+     url:'sagenec.com/tui'},
+    {n:'Brabant',form:'Широкопирамидальная',height:'до 5 м',grow:'+30 см/год',color:'Зелёная, зимой слегка буреет — это норма',use:'Быстрая живая изгородь',
+     d:'Самая быстрорастущая туя. Чуть шире Смарагда. Буреет зимой — не болезнь! Расстояние 80–100 см.',
+     url:'sagenec.com/tui'},
+    {n:'Columna',form:'Колонновидная',height:'до 6-8 м',grow:'+15-20 см/год',color:'Тёмно-зелёная, не буреет',use:'Акцент, аллея, изгородь',
+     d:'Строгая колонна с тёмно-зелёной глянцевой хвоей. Не буреет зимой. Более узкая чем Смарагд.',
+     url:'sagenec.com/tuya-zapadnaya-columna-3l'},
+    {n:'Mirjam',form:'Шаровидная',height:'до 1 м',grow:'+5-8 см/год',color:'Зелёная',use:'Бордюр, рокарий, контейнер',
+     d:'Компактный плотный шар. Идеальна для бордюров и небольших садов. Адрес: С8, Ф5.',
+     addr:'С8, Ф5',url:'sagenec.com/tui'},
+    {n:'Yellow Ribbon',form:'Узкоконическая',height:'до 2-3 м',grow:'+10-15 см/год',color:'Ярко-золотисто-жёлтая круглый год',use:'Цветовой акцент, контраст',
+     d:'Редкая жёлтая туя, не теряющая цвет зимой. Только солнечное место — в тени желтизна пропадает.',
+     url:'sagenec.com/tuya-zapadnaya-yellow-ribbon-5-0l'},
+    {n:'Teddy',form:'Шаровидная',height:'0.3-0.5 м',grow:'очень медленно',color:'Зелёная с голубоватым, зимой бронзовая',use:'Рокарий, альпинарий, контейнер',
+     d:'Карликовая с уникальной мягкой «плюшевой» хвоей. Идеальная естественная форма без стрижки.',
+     url:'sagenec.com/tuya-zapadnaya-teddy-kontejner-2-0l'},
+    {n:'Spiralis',form:'Пирамидальная с закрученными побегами',height:'до 5 м',grow:'+15 см/год',color:'Зелёная',use:'Акцент, солитер',
+     d:'Уникальная форма — побеги закручены спиралью. Оригинальное акцентное дерево для садов.',
+     url:'sagenec.com/tuya-zapadnaya-spiralis-5-0l'}
+  ],
+  eli: [
+    {n:'Коника (Conica)',form:'Коническая',height:'до 2-3 м за жизнь',grow:'+3-5 см/год',color:'Светло-зелёная, нежная',use:'Рокарий, контейнер, акцент',
+     d:'⚠️ ОБЯЗАТЕЛЬНО укрывать от мартовского солнца! Иначе осыпается хвоя. Самая деликатная ель.',
+     url:'sagenec.com/eli'},
+    {n:'Alberta Globe',form:'Подушковидная',height:'0.5-0.8 м',grow:'+2-3 см/год',color:'Светло-зелёная, мягкая хвоя',use:'Рокарий, контейнер',
+     d:'Карликовая шаровидная форма. Очень медленная. Молодым нужна защита на первую зиму.',
+     url:'sagenec.com/el-kanadskaya-alberta-globe-kontejner-1-5l'},
+    {n:'Голубая (Hoopsii)',form:'Пирамидальная',height:'до 10-15 м',grow:'+25-30 см/год',color:'Ярко-серебристо-голубая',use:'Солитер, доминанта',
+     d:'Самая голубая ель. Мощное дерево для большого сада. Зимостойкая, нетребовательная.',
+     url:'sagenec.com/eli'},
+    {n:'Nidiformis',form:'Гнездовидная плоская',height:'до 1 м',grow:'+3-4 см/год',color:'Зелёная',use:'Рокарий, почвопокровное',
+     d:'Плоская подушка с характерным углублением в центре. Очень медленная. Без обрезки.',
+     url:'sagenec.com/eli'}
+  ],
+  junip: [
+    {n:'Gold Star',form:'Широкораскидистая',height:'до 1 м',grow:'+10 см/год',color:'Золотисто-жёлтая',use:'Рокарий, альпинарий, склон',
+     d:'Редкий золотистый оттенок хвои. Низкий раскидистый куст. Ценный декоративный сорт.',
+     url:'sagenec.com/mozhzhevelnik-srednij-gold-star-kontejner-2-0l'},
+    {n:'Lemon Hill',form:'Широкая приземистая',height:'0.4 м',grow:'+8-10 см/год',color:'Лаймово-мятная',use:'Рокарий, бордюр',
+     d:'Уникальный лаймово-мятный оттенок хвои. Устойчив к выпреванию. Нетребователен к почве.',
+     url:'sagenec.com/mozhzhevelnik-srednij-lemon-hill-kontejner-2-0l'},
+    {n:'King of Spring',form:'Широкораскидистая',height:'0.5 м',grow:'+8 см/год',color:'Молодые приросты золотисто-жёлтые',use:'Рокарий, склон, массив',
+     d:'Двухцветная хвоя: молодые побеги жёлтые, старые — зелёные. Морозостоек, не требует стрижки.',
+     url:'sagenec.com/mozhzhevelnik-srednij-king-of-spring-kontejner-2-0l'},
+    {n:'Hibernica',form:'Колонновидная',height:'до 4 м',grow:'+20 см/год',color:'Сизовато-зелёная',use:'Вертикальный акцент, изгородь',
+     d:'Стройная плотная колонна. Хорошо переносит стрижку. Предпочитает полутень.',
+     url:'sagenec.com/mozhzhevelnik-obyknovennyj-hibernica-3-0l'},
+    {n:'Horstmann',form:'Плакучая раскидистая',height:'1.5-2 м',grow:'+10-15 см/год',color:'Зелёная с сизым',use:'Солитер, скульптурный акцент',
+     d:'Уникальная живописная плакучая форма с дуговидно поникающими побегами. Акцентное растение.',
+     url:'sagenec.com/mozhzhevelnik-obyknovennyj-horstmann-kontejner-0-5l'},
+    {n:'Dream Joy',form:'Раскидистая',height:'0.5 м',grow:'+10-15 см/год',color:'Зелёная с серо-голубым',use:'Рокарий, альпинарий',
+     d:'Карликовый чешуйчатый можжевельник. Асимметричная крона с поникающими концами побегов.',
+     url:'sagenec.com/mozhzhevelnik-cheshujchatyj-dream-joy-2-0l'},
+    {n:'Pfitzeriana Compacta',form:'Подушковидная',height:'0.8-1 м',grow:'+10-15 см/год',color:'Зелёная с голубоватым, зимой бронзовая',use:'Склон, рокарий, бордюр',
+     d:'Плотная компактная подушка. Хорошо переносит засуху. Универсальный неприхотливый сорт.',
+     url:'sagenec.com/mozhzhevelnik-srednij-pfitzeriana-compacta-3-0l'}
+  ],
+  sosny: [
+    {n:'Mops (Горная)',form:'Идеальный шар',height:'1-1.5 м',grow:'+5-7 см/год',color:'Тёмно-зелёная',use:'Рокарий, акцент, контейнер',
+     d:'Идеальная шаровидная форма без стрижки. Засухоустойчива. Весной прищипывать свечи для компактности.',
+     url:'sagenec.com/sosny'},
+    {n:'Fastigiata (Веймутова)',form:'Узкоколонновидная',height:'до 10 м',grow:'+30-40 см/год',color:'Сине-зелёная, мягкая хвоя',use:'Вертикальный акцент, аллея',
+     d:'Стройная быстрорастущая колонна с мягкой длинной хвоей. Эффектный вертикальный акцент.',
+     url:'sagenec.com/sosny'}
+  ]
+};
+
 var ROSES = {
   kanad: [
     {n:'Champlain',img:'https://sagenec.com/image/cache/catalog/categories%20main%20photo/roza-kanadskaya-champlain-241x181.jpg',
@@ -1189,6 +1492,120 @@ function showRhodod(group, idx, btn) {
   det.scrollIntoView({behavior:'smooth',block:'nearest'});
 }
 
+function sorbusTab(id, btn) {
+  document.querySelectorAll('.sorbp').forEach(function(p){p.classList.remove('on')});
+  document.querySelectorAll('#p-sorbus .stab').forEach(function(b){b.classList.remove('on')});
+  document.getElementById('sb-'+id).classList.add('on');
+  btn.classList.add('on');
+}
+
+function buildSorbus() {
+  Object.keys(SORBUS).forEach(function(group) {
+    var el = document.getElementById('sblist-'+group);
+    if (!el) return;
+    el.innerHTML = SORBUS[group].map(function(r, i) {
+      return '<button class="pb" onclick="showSorbus(&quot;'+group+'&quot;,'+i+',this)">'+r.n+'</button>';
+    }).join('');
+  });
+}
+
+function showSorbus(group, idx, btn) {
+  var r = SORBUS[group][idx];
+  btn.closest('.pg').querySelectorAll('.pb').forEach(function(b){b.classList.remove('on')});
+  btn.classList.add('on');
+  var addrHtml = r.addr ? '<div style="display:inline-flex;align-items:center;gap:4px;background:var(--gnl);color:var(--gn);border-radius:6px;padding:4px 9px;font-size:10px;font-weight:700;margin-bottom:8px;margin-left:6px">🗺 Адрес: '+r.addr+'</div>' : '';
+  var locHtml = r.url ? '<a href="https://'+r.url+'" target="_blank" style="display:inline-flex;align-items:center;gap:4px;background:#1a1a1a;color:#fff;border-radius:6px;padding:4px 9px;font-size:10px;font-weight:600;text-decoration:none;margin-bottom:8px">📍 На сайте питомника</a>' : '';
+  document.getElementById('sbdc-'+group).innerHTML =
+    '<div class="pnm" style="margin-bottom:8px">'+r.n+'</div>' +
+    '<div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:8px">'+locHtml+addrHtml+'</div>' +
+    '<p class="pdsc">'+r.d+'</p>' +
+    '<div class="g2">' +
+    '<div class="ib"><div class="il">Высота</div><div class="iv">'+r.height+'</div></div>' +
+    '<div class="ib"><div class="il">Плоды</div><div class="iv">'+r.fruit+'</div></div>' +
+    '<div class="ib"><div class="il">Цветение</div><div class="iv">'+r.bloom+'</div></div>' +
+    '</div>';
+  var det = document.getElementById('sbdet-'+group);
+  det.classList.add('on');
+  det.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+function sorbusTab(id, btn) {
+  document.querySelectorAll('.srbp').forEach(function(p){p.classList.remove('on')});
+  document.querySelectorAll('#p-sorbus .stab').forEach(function(b){b.classList.remove('on')});
+  document.getElementById('sb-'+id).classList.add('on');
+  btn.classList.add('on');
+}
+
+function buildSorbus() {
+  Object.keys(SORBUS).forEach(function(group) {
+    var el = document.getElementById('sblist-'+group);
+    if (!el) return;
+    el.innerHTML = SORBUS[group].map(function(r, i) {
+      return '<button class="pb" onclick="showSorbus(&quot;'+group+'&quot;,'+i+',this)">'+r.n+'</button>';
+    }).join('');
+  });
+}
+
+function showSorbus(group, idx, btn) {
+  var r = SORBUS[group][idx];
+  btn.closest('.pg').querySelectorAll('.pb').forEach(function(b){b.classList.remove('on')});
+  btn.classList.add('on');
+  var addrHtml = r.addr ? '<div style="display:inline-flex;align-items:center;gap:4px;background:var(--gnl);color:var(--gn);border-radius:6px;padding:4px 9px;font-size:10px;font-weight:700;margin-bottom:8px;margin-left:6px">🗺 Адрес: '+r.addr+'</div>' : '';
+  var locHtml = r.url ? '<a href="https://'+r.url+'" target="_blank" style="display:inline-flex;align-items:center;gap:4px;background:#1a1a1a;color:#fff;border-radius:6px;padding:4px 9px;font-size:10px;font-weight:600;text-decoration:none;margin-bottom:8px">📍 На сайте питомника</a>' : '';
+  document.getElementById('sbdc-'+group).innerHTML =
+    '<div class="pnm" style="margin-bottom:8px">'+r.n+'</div>' +
+    '<div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:8px">'+locHtml+addrHtml+'</div>' +
+    '<p class="pdsc">'+r.d+'</p>' +
+    '<div class="g2">' +
+    '<div class="ib"><div class="il">Цвет ягод</div><div class="iv">'+r.color+'</div></div>' +
+    '<div class="ib"><div class="il">Высота</div><div class="iv">'+r.height+'</div></div>' +
+    '<div class="ib"><div class="il">Цветение</div><div class="iv">'+r.bloom+'</div></div>' +
+    '<div class="ib"><div class="il">Плоды</div><div class="iv">'+r.fruit+'</div></div>' +
+    '</div>';
+  var det = document.getElementById('sbdet-'+group);
+  det.classList.add('on');
+  det.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+function conGroupTab(id, btn) {
+  document.querySelectorAll('.cfbp').forEach(function(p){p.classList.remove('on')});
+  document.querySelectorAll('#p-conifer .stab').forEach(function(b){b.classList.remove('on')});
+  document.getElementById('cg-'+id).classList.add('on');
+  btn.classList.add('on');
+}
+
+function buildConifers() {
+  Object.keys(CONIFERS).forEach(function(group) {
+    var el = document.getElementById('cflist-'+group);
+    if (!el) return;
+    el.innerHTML = CONIFERS[group].map(function(r, i) {
+      return '<button class="pb" onclick="showConifer(&quot;'+group+'&quot;,'+i+',this)">'+r.n+'</button>';
+    }).join('');
+  });
+}
+
+function showConifer(group, idx, btn) {
+  var r = CONIFERS[group][idx];
+  btn.closest('.pg').querySelectorAll('.pb').forEach(function(b){b.classList.remove('on')});
+  btn.classList.add('on');
+  var addrHtml = r.addr ? '<div style="display:inline-flex;align-items:center;gap:4px;background:var(--gnl);color:var(--gn);border-radius:6px;padding:4px 9px;font-size:10px;font-weight:700;margin-bottom:8px;margin-left:6px">🗺 Адрес: '+r.addr+'</div>' : '';
+  var locHtml = r.url ? '<a href="https://'+r.url+'" target="_blank" style="display:inline-flex;align-items:center;gap:4px;background:#1a1a1a;color:#fff;border-radius:6px;padding:4px 9px;font-size:10px;font-weight:600;text-decoration:none;margin-bottom:8px">📍 На сайте питомника</a>' : '';
+  document.getElementById('cfdc-'+group).innerHTML =
+    '<div class="pnm" style="margin-bottom:8px">'+r.n+'</div>' +
+    '<div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:8px">'+locHtml+addrHtml+'</div>' +
+    '<p class="pdsc">'+r.d+'</p>' +
+    '<div class="g2" style="margin-bottom:4px">' +
+    '<div class="ib"><div class="il">Форма</div><div class="iv">'+r.form+'</div></div>' +
+    '<div class="ib"><div class="il">Высота</div><div class="iv">'+r.height+'</div></div>' +
+    '<div class="ib"><div class="il">Прирост</div><div class="iv">'+r.grow+'</div></div>' +
+    '<div class="ib"><div class="il">Цвет хвои</div><div class="iv">'+r.color+'</div></div>' +
+    '<div class="ib" style="grid-column:1/-1"><div class="il">Применение</div><div class="iv">'+r.use+'</div></div>' +
+    '</div>';
+  var det = document.getElementById('cfdet-'+group);
+  det.classList.add('on');
+  det.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
 function roseGroupTab(id, btn) {
   document.querySelectorAll('.rbp').forEach(function(p){p.classList.remove('on')});
   document.querySelectorAll('#p-roses .stab').forEach(function(b){b.classList.remove('on')});
@@ -1351,9 +1768,50 @@ document.getElementById('manifest-link').href = URL.createObjectURL(mb);
 
 buildList();
 buildRoses();
+buildConifers();
+buildSorbus();
+buildSorbus();
 buildRhodod();
+buildConifers();
 buildFaq();
 buildLight();
 </script>
+
+<div id="p-sorbus" class="panel">
+  <button class="back-btn" onclick="goTab('home',document.getElementById('nb-home'))"><svg width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>На главную</button>
+  <div class="card">
+    <div class="sec">🌳 Рябины</div>
+    <a class="sector" href="https://sagenec.com/ryabiny" target="_blank">📍 Рябины на сайте питомника</a>
+    <div class="sub-tabs" style="margin-top:8px">
+      <button class="stab on" onclick="sorbusTab('dekor',this)">🌸 Декоративные</button>
+      <button class="stab" onclick="sorbusTab('plod',this)">🍎 Плодовые</button>
+      <button class="stab" onclick="sorbusTab('aroniya',this)">🫐 Арония</button>
+    </div>
+  </div>
+  <div id="sb-dekor" class="sorbp on">
+    <div class="card">
+      <div class="lbl">Нажмите на сорт</div>
+      <div style="background:var(--pul);color:var(--pu);border-radius:8px;padding:7px 10px;font-size:11px;margin-bottom:10px">🌸 Декоративные рябины — для красоты сада. Плоды мелкие, птицы поедают.</div>
+      <div class="pg" id="sblist-dekor"></div>
+    </div>
+    <div class="card det" id="sbdet-dekor"><div id="sbdc-dekor"></div></div>
+  </div>
+  <div id="sb-plod" class="sorbp">
+    <div class="card">
+      <div class="lbl">Нажмите на сорт</div>
+      <div style="background:var(--gnl);color:var(--gn);border-radius:8px;padding:7px 10px;font-size:11px;margin-bottom:10px">🍎 Плодовые рябины — крупные вкусные плоды без горечи. Для варенья, настоек.</div>
+      <div class="pg" id="sblist-plod"></div>
+    </div>
+    <div class="card det" id="sbdet-plod"><div id="sbdc-plod"></div></div>
+  </div>
+  <div id="sb-aroniya" class="sorbp">
+    <div class="card">
+      <div class="lbl">Нажмите на сорт</div>
+      <div style="background:var(--tll);color:var(--tl);border-radius:8px;padding:7px 10px;font-size:11px;margin-bottom:10px">🫐 Арония (черноплодная рябина) — лекарственная ягода, декоративна осенью.</div>
+      <div class="pg" id="sblist-aroniya"></div>
+    </div>
+    <div class="card det" id="sbdet-aroniya"><div id="sbdc-aroniya"></div></div>
+  </div>
+</div>
 </body>
 </html>
