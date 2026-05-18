@@ -173,6 +173,7 @@ ul{margin-left:15px}li{margin-bottom:3px;font-size:12px}
 .back-btn:active{opacity:.6}
 
 .srbp{display:none}.srbp.on{display:block}
+.lybp{display:none}.lybp.on{display:block}
 .sector{display:inline-flex;align-items:center;gap:5px;background:#1a1a1a;color:#fff;border-radius:8px;padding:5px 10px;font-size:11px;font-weight:600;margin-bottom:10px;text-decoration:none}
 </style>
 </head>
@@ -222,6 +223,11 @@ ul{margin-left:15px}li{margin-bottom:3px;font-size:12px}
         <span class="home-ico">🌸</span>
         <span class="home-lbl">Рододендроны</span>
         <span class="home-sub">сорта, уход, адреса</span>
+      </button>
+      <button class="home-tile" onclick="goTab('lilies',document.getElementById('nb-home'))">
+        <span class="home-ico">🌺</span>
+        <span class="home-lbl">Лилии</span>
+        <span class="home-sub">Азиатские · ЛА · Восточные · ОТ · ТА</span>
       </button>
     </div>
   </div>
@@ -551,6 +557,132 @@ ul{margin-left:15px}li{margin-bottom:3px;font-size:12px}
       <div class="pg" id="sblist-aronia"></div>
     </div>
     <div class="card det" id="sbdet-aronia"><div id="sbdc-aronia"></div></div>
+  </div>
+</div>
+<div id="p-lilies" class="panel">
+  <button class="back-btn" onclick="goTab('home',document.getElementById('nb-home'))"><svg width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>На главную</button>
+  <div class="card">
+    <div class="sec">🌺 Лилии</div>
+    <a class="sector" href="https://sagenec.com/lilii" target="_blank">📍 Лилии на сайте питомника</a>
+    <div class="sub-tabs" style="margin-top:8px">
+      <button class="stab on" onclick="lilyTab('aziat',this)">🌸 Азиатские</button>
+      <button class="stab" onclick="lilyTab('aziat_dbl',this)">🌸🌸 Махровые</button>
+      <button class="stab" onclick="lilyTab('la',this)">🌼 ЛА-гибриды</button>
+      <button class="stab" onclick="lilyTab('vost',this)">💫 Восточные</button>
+      <button class="stab" onclick="lilyTab('ot',this)">🌟 ОТ-гибриды</button>
+      <button class="stab" onclick="lilyTab('ta',this)">🌾 ТА-гибриды</button>
+      <button class="stab" onclick="lilyTab('rozov',this)">🌹 Розовидные</button>
+      <button class="stab" onclick="lilyTab('lcare',this)">📋 Уход</button>
+    </div>
+  </div>
+
+  <!-- АЗИАТСКИЕ -->
+  <div id="ly-aziat" class="lybp on">
+    <div class="card">
+      <div style="background:var(--gnl);color:var(--gn);border-radius:8px;padding:8px 11px;font-size:12px;margin-bottom:10px">
+        ✅ <b>Азиатские — выбор для начинающих.</b> Самые неприхотливые, не болеют, зимуют без укрытия. Минус — практически нет аромата. Серия <b>Tiny</b> — компактные, для горшков и балконов.
+      </div>
+      <div class="lbl">Сорта в питомнике</div>
+      <div class="pg" id="lylist-aziat"></div>
+    </div>
+    <div class="card det" id="lydet-aziat"><div id="lydc-aziat"></div></div>
+  </div>
+
+  <!-- АЗИАТСКИЕ МАХРОВЫЕ -->
+  <div id="ly-aziat_dbl" class="lybp">
+    <div class="card">
+      <div style="background:var(--pul);color:var(--pu);border-radius:8px;padding:8px 11px;font-size:12px;margin-bottom:10px">
+        🌸 <b>Махровые азиатские — те же азиатки, только цветок как пион.</b> Больше шести лепестков — дополнительные ряды создают пышную форму. Аромата нет, но декоративность вдвое выше.
+      </div>
+      <div class="lbl">Сорта в питомнике</div>
+      <div class="pg" id="lylist-aziat_dbl"></div>
+    </div>
+    <div class="card det" id="lydet-aziat_dbl"><div id="lydc-aziat_dbl"></div></div>
+  </div>
+
+  <!-- ЛА-ГИБРИДЫ -->
+  <div id="ly-la" class="lybp">
+    <div class="card">
+      <div style="background:var(--bll);color:var(--bl);border-radius:8px;padding:8px 11px;font-size:12px;margin-bottom:10px">
+        🌼 <b>ЛА-гибриды — золотая середина.</b> Неприхотливость и зимостойкость азиатских + более крупный цветок и лёгкий аромат от длинноцветковой лилии. Хороши для срезки.
+      </div>
+      <div class="lbl">Сорта в питомнике</div>
+      <div class="pg" id="lylist-la"></div>
+    </div>
+    <div class="card det" id="lydet-la"><div id="lydc-la"></div></div>
+  </div>
+
+  <!-- ВОСТОЧНЫЕ -->
+  <div id="ly-vost" class="lybp">
+    <div class="card">
+      <div style="background:var(--aml);color:var(--am);border-radius:8px;padding:8px 11px;font-size:12px;margin-bottom:10px">
+        💫 <b>Восточные — звёзды по красоте и аромату.</b> Огромные цветки до 30–35 см, сильный аромат. Требовательны: кислая дренированная почва, укрытие на зиму. Vendome — самая поздняя, до сентября.
+      </div>
+      <div class="lbl">Сорта в питомнике</div>
+      <div class="pg" id="lylist-vost"></div>
+    </div>
+    <div class="card det" id="lydet-vost"><div id="lydc-vost"></div></div>
+  </div>
+
+  <!-- ОТ-ГИБРИДЫ -->
+  <div id="ly-ot" class="lybp">
+    <div class="card">
+      <div style="background:var(--tll);color:var(--tl);border-radius:8px;padding:8px 11px;font-size:12px;margin-bottom:10px">
+        🌟 <b>ОТ-гибриды — гиганты.</b> Высота до 2 м, цветки 20–25 см, ароматные. Зимостойче восточных, но требуют регулярных подкормок — без них мельчают.
+      </div>
+      <div class="lbl">Сорта в питомнике</div>
+      <div class="pg" id="lylist-ot"></div>
+    </div>
+    <div class="card det" id="lydet-ot"><div id="lydc-ot"></div></div>
+  </div>
+
+  <!-- ТА-ГИБРИДЫ -->
+  <div id="ly-ta" class="lybp">
+    <div class="card">
+      <div style="background:var(--gnl);color:var(--gn);border-radius:8px;padding:8px 11px;font-size:12px;margin-bottom:10px">
+        🌾 <b>ТА-гибриды — трубчатые × азиатские.</b> От трубчатых — высокий рост и ненавязчивый аромат, от азиатских — неприхотливость и зимостойкость.
+      </div>
+      <div class="lbl">Сорта в питомнике</div>
+      <div class="pg" id="lylist-ta"></div>
+    </div>
+    <div class="card det" id="lydet-ta"><div id="lydc-ta"></div></div>
+  </div>
+
+  <!-- РОЗОВИДНЫЕ -->
+  <div id="ly-rozov" class="lybp">
+    <div class="card">
+      <div style="background:var(--col);color:var(--co);border-radius:8px;padding:8px 11px;font-size:12px;margin-bottom:10px">
+        🌹 <b>Розовидные — самая нетипичная форма.</b> Цветок-пион или цветок-роза с многочисленными рядами лепестков. Эффект неожиданности гарантирован!
+      </div>
+      <div class="lbl">Сорта в питомнике</div>
+      <div class="pg" id="lylist-rozov"></div>
+    </div>
+    <div class="card det" id="lydet-rozov"><div id="lydc-rozov"></div></div>
+  </div>
+
+  <!-- УХОД -->
+  <div id="ly-lcare" class="lybp">
+    <div class="card">
+      <div class="sec">Посадка лилий</div>
+      <div class="frule"><div class="frule-t">Сроки</div><div class="frule-b">Весна (апрель–май) или осень (сентябрь–октябрь). Осенью — не позже чем за 4 недели до морозов, чтобы луковица успела укорениться.</div></div>
+      <div class="frule"><div class="frule-t">Глубина и расстояние</div><div class="frule-b">Глубина посадки = 3 диаметра луковицы. Мелкие луковицы — 8–10 см, крупные — 15–20 см. Расстояние между луковицами: 20–25 см для Tiny, 30–40 см для высоких сортов.</div></div>
+      <div class="frule"><div class="frule-t">Грунт</div><div class="frule-b">Рыхлая, дренированная почва. На тяжёлой глине добавить песок и торф. Восточные и ОТ — обязательно кислая почва (pH 5.5–6.5). Азиатские и ЛА — нейтральная (pH 6–7).</div></div>
+      <div class="frule"><div class="frule-t">Место</div><div class="frule-b">Солнце или лёгкая полутень. «Голова на солнце, ноги в тени» — мульчировать корневую зону. Защита от ветра для высоких сортов.</div></div>
+    </div>
+    <div class="card">
+      <div class="sec">Уход</div>
+      <div class="frule"><div class="frule-t">Полив</div><div class="frule-b">Регулярный, но без застоя воды — луковицы гниют. Поливать под корень, не на листья. В засуху — 1 раз в 3–4 дня.</div></div>
+      <div class="frule"><div class="frule-t">Подкормки</div><div class="frule-b">Весна (до бутонов) — азот. В период бутонизации — фосфор и калий. После цветения — только калий, для вызревания луковицы.</div></div>
+      <div class="frule"><div class="frule-t">После цветения</div><div class="frule-b">Срезать отцветшие цветки, стебель не трогать до пожелтения — луковица питается через листья. Срезать стебель можно только после полного пожелтения.</div></div>
+      <div class="frule"><div class="frule-t">Зимовка</div><div class="frule-b">Азиатские и ЛА — без укрытия (зона 4). Восточные и ОТ — замульчировать торфом 10–15 см, укрыть лапником. Серия Tiny — можно оставить в горшке в прохладном месте.</div></div>
+    </div>
+    <div class="card">
+      <div class="sec">⚠️ Главные ошибки с лилиями</div>
+      <div class="frule"><div class="frule-t">Мелкая посадка</div><div class="frule-b">Луковица перегревается, плохо цветёт. Сажать на 3 диаметра луковицы вглубь.</div></div>
+      <div class="frule"><div class="frule-t">Застой воды</div><div class="frule-b">Луковицы гниют. Обязательно дренаж на дно ямы.</div></div>
+      <div class="frule"><div class="frule-t">Срезать стебель сразу после цветения</div><div class="frule-b">Луковица не успевает накопить питание — на следующий год цветение слабое или отсутствует.</div></div>
+      <div class="frule"><div class="frule-t">Не подкармливать</div><div class="frule-b">ОТ-гибриды без подкормок мельчают уже на 2-й год.</div></div>
+    </div>
   </div>
 </div>
 <div id="p-light" class="panel">
@@ -1314,6 +1446,71 @@ var RHODOD = {
   ]
 };
 
+var LILIES = {
+  aziat: [
+    {n:'Tiny Bee',color:'Лимонно-жёлтый с тёмными точками',height:'30–40 см',aroma:'Нет',bloom:'Июнь–июль',zone:'Зона 4, без укрытия',
+     d:'Компактная серия Tiny — для горшков, балконов, бордюров. Яркий контрастный окрас. Неприхотлива, не болеет.',
+     url:'sagenec.com/lilii/liliya-aziatskaya-tiny-bee'},
+    {n:'Tiny Ghost',color:'Кремово-белый с бордовыми пятнами',height:'30–40 см',aroma:'Нет',bloom:'Июнь–июль',zone:'Зона 4, без укрытия',
+     d:'Серия Tiny. Загадочный контрастный окрас — белые лепестки с тёмными пятнами в центре. Для контейнеров и переднего плана.',
+     url:'sagenec.com/lilii/liliya-aziatskaya-tiny-ghost'},
+    {n:'Tiny Ink',color:'Белый с фиолетово-чёрными пятнами',height:'30–40 см',aroma:'Нет',bloom:'Июнь–июль',zone:'Зона 4, без укрытия',
+     d:'Серия Tiny. Уникальный двухцветный окрас — белый с тёмно-фиолетовыми чернильными пятнами. Очень эффектна в горшках.',
+     url:'sagenec.com/lilii/liliya-aziatskaya-tiny-ink'},
+  ],
+  aziat_dbl: [
+    {n:'Pura Luna',color:'Нежно-розовый, махровый',height:'60–80 см',aroma:'Слабый',bloom:'Июнь–июль',zone:'Зона 4, без укрытия',
+     d:'Азиатская махровая. Цветок как пион — множество рядов лепестков нежно-розового цвета. Декоративность значительно выше обычных азиатских.',
+     url:'sagenec.com/lilii'},
+    {n:'Pura Paz',color:'Белый с кремовым центром, махровый',height:'60–80 см',aroma:'Слабый',bloom:'Июнь–июль',zone:'Зона 4, без укрытия',
+     d:'Азиатская махровая. Белоснежная пышная форма — напоминает пион или гардению. Очень нарядна в букете.',
+     url:'sagenec.com/lilii'},
+    {n:'Tiny Double Dutch',color:'Жёлто-оранжевый, махровый',height:'30–40 см',aroma:'Нет',bloom:'Июнь–июль',zone:'Зона 4, без укрытия',
+     d:'Серия Tiny — компактная махровая. Тёплый жёлто-оранжевый окрас. Для контейнеров и балконов. Очень долго держит цветок.',
+     url:'sagenec.com/lilii'},
+  ],
+  la: [
+    {n:'Bradano',color:'Белый с лиловым краем и жёлтым центром',height:'80–100 см',aroma:'Лёгкий',bloom:'Июль',zone:'Зона 4, без укрытия',
+     d:'ЛА-гибрид. Крупные цветки с изящной окраской — белые лепестки с сиреневым краем. Хорош для срезки, долго стоит в вазе.',
+     url:'sagenec.com/lilii/liliya-la-gibrid-bradano'},
+    {n:'Eyeliner',color:'Белый с тёмно-бордовой каймой',height:'90–110 см',aroma:'Лёгкий',bloom:'Июль',zone:'Зона 4, без укрытия',
+     d:'ЛА-гибрид. Контрастная окраска — белый цветок с чёткой тёмной каймой как подводка. Один из самых популярных ЛА-гибридов для срезки.',
+     url:'sagenec.com/lilii/liliya-la-gibrid-eyeliner'},
+  ],
+  vost: [
+    {n:'Santander',color:'Розово-малиновый с белым краем',height:'80–100 см',aroma:'Очень сильный',bloom:'Август',zone:'Зона 5, укрытие на зиму',
+     d:'Восточная лилия. Крупные ароматные цветки. Требует кислой почвы (pH 5.5–6.5) и укрытия торфом на зиму.',
+     url:'sagenec.com/lilii'},
+    {n:'Sunny Keys',color:'Жёлтый с белым краем',height:'80–100 см',aroma:'Очень сильный',bloom:'Август',zone:'Зона 5, укрытие на зиму',
+     d:'Восточная лилия. Нежный жёлто-белый окрас — редкость среди восточных. Очень сильный аромат. Требует кислой дренированной почвы.',
+     url:'sagenec.com/lilii'},
+    {n:'Vendome',color:'Белый с малиновой серединой',height:'90–110 см',aroma:'Очень сильный',bloom:'Август–сентябрь',zone:'Зона 5, укрытие на зиму',
+     d:'Восточная лилия — самая поздняя в группе. Цветёт до сентября, продлевает сезон. Цветки крупные до 30 см, аромат исключительный.',
+     url:'sagenec.com/lilii/liliya-vostochnaya-vendome'},
+  ],
+  ot: [
+    {n:'Qwic',color:'Жёлто-оранжевый',height:'150–180 см',aroma:'Средний',bloom:'Июль–август',zone:'Зона 4b, лёгкое укрытие',
+     d:'ОТ-гибрид. Высота до 1.8 м. Цветки 20–25 см, тёплый жёлто-оранжевый окрас. Зимостойче восточных. Требует регулярных подкормок.',
+     url:'sagenec.com/lilii'},
+    {n:'Frontera',color:'Белый с малиновым центром',height:'150–200 см',aroma:'Сильный',bloom:'Июль–август',zone:'Зона 4b, лёгкое укрытие',
+     d:'ОТ-гибрид. До 2 м высотой. Крупные белые цветки с малиновым центром. Сочетает красоту восточных с лучшей зимостойкостью.',
+     url:'sagenec.com/lilii'},
+  ],
+  ta: [
+    {n:'Bataleon',color:'Оранжево-красный с крапинками',height:'100–150 см',aroma:'Лёгкий',bloom:'Июль',zone:'Зона 4, без укрытия',
+     d:'ТА-гибрид (трубчатая × азиатская). Высокий рост и ненавязчивый аромат от трубчатых + неприхотливость от азиатских. Хорош для задних планов.',
+     url:'sagenec.com/lilii'},
+    {n:'Sentosa',color:'Нежно-розовый пастельный',height:'100–130 см',aroma:'Лёгкий',bloom:'Июль',zone:'Зона 4, без укрытия',
+     d:'ТА-гибрид. Пастельный нежно-розовый окрас. Универсальный неприхотливый сорт для любого сада.',
+     url:'sagenec.com/lilii'},
+  ],
+  rozov: [
+    {n:'Lucia',color:'Нежно-розовый, розовидный',height:'60–80 см',aroma:'Слабый',bloom:'Июль',zone:'Зона 4, без укрытия',
+     d:'Розовидная лилия. Цветок-пион с многочисленными рядами лепестков нежно-розового цвета. Самая нетипичная для лилии форма — эффект неожиданности у покупателей гарантирован!',
+     url:'sagenec.com/lilii'},
+  ]
+};
+
 var SORBUS = {
   dekor: [
     {n:'Плакучая',height:'до 6 м',fruit:'Красные, 6-8 мм',bloom:'Май-июнь',d:'Декоративная форма с поникающими ветвями. Красивые красные гроздья с июля. Птицы слетаются уже в октябре.',addr:'Ф2',url:'sagenec.com/ryabina-plakuchaya-ryabina-obyknovennaya'},
@@ -1774,6 +1971,44 @@ function showRhodod(group, idx, btn) {
   det.scrollIntoView({behavior:'smooth',block:'nearest'});
 }
 
+function lilyTab(id, btn) {
+  document.querySelectorAll('.lybp').forEach(function(p){p.classList.remove('on')});
+  document.querySelectorAll('#p-lilies .stab').forEach(function(b){b.classList.remove('on')});
+  document.getElementById('ly-'+id).classList.add('on');
+  btn.classList.add('on');
+}
+
+function buildLilies() {
+  Object.keys(LILIES).forEach(function(group) {
+    var el = document.getElementById('lylist-'+group);
+    if (!el) return;
+    el.innerHTML = LILIES[group].map(function(r, i) {
+      return '<button class="pb" onclick="showLily(&quot;'+group+'&quot;,'+i+',this)">'+r.n+'</button>';
+    }).join('');
+  });
+}
+
+function showLily(group, idx, btn) {
+  var r = LILIES[group][idx];
+  btn.closest('.pg').querySelectorAll('.pb').forEach(function(b){b.classList.remove('on')});
+  btn.classList.add('on');
+  var locHtml = r.url ? '<a href="https://'+r.url+'" target="_blank" style="display:inline-flex;align-items:center;gap:4px;background:#1a1a1a;color:#fff;border-radius:6px;padding:4px 9px;font-size:10px;font-weight:600;text-decoration:none;margin-bottom:8px">📍 На сайте питомника</a>' : '';
+  document.getElementById('lydc-'+group).innerHTML =
+    '<div class="pnm" style="margin-bottom:8px">'+r.n+'</div>' +
+    '<div style="margin-bottom:8px">'+locHtml+'</div>' +
+    '<p class="pdsc">'+r.d+'</p>' +
+    '<div class="g2">' +
+    '<div class="ib"><div class="il">Цвет</div><div class="iv">'+r.color+'</div></div>' +
+    '<div class="ib"><div class="il">Высота</div><div class="iv">'+r.height+'</div></div>' +
+    '<div class="ib"><div class="il">Аромат</div><div class="iv">'+r.aroma+'</div></div>' +
+    '<div class="ib"><div class="il">Цветение</div><div class="iv">'+r.bloom+'</div></div>' +
+    '<div class="ib" style="grid-column:1/-1"><div class="il">Зимостойкость</div><div class="iv">'+r.zone+'</div></div>' +
+    '</div>';
+  var det = document.getElementById('lydet-'+group);
+  det.classList.add('on');
+  det.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
 function sorbusTab(id, btn) {
   document.querySelectorAll('.sorbp').forEach(function(p){p.classList.remove('on')});
   document.querySelectorAll('#p-sorbus .stab').forEach(function(b){b.classList.remove('on')});
@@ -2079,6 +2314,7 @@ buildList();
 buildRoses();
 buildConifers();
 buildSorbus();
+buildLilies();
 buildSorbus();
 buildRhodod();
 buildConifers();
